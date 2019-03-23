@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "447976257942",
+    "firebase_url": "https://adegaholdlemon.firebaseio.com",
+    "project_id": "adegaholdlemon",
+    "storage_bucket": "adegaholdlemon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447976257942:android:e125a1aa8572ca9a",
+        "android_client_info": {
+          "package_name": "br.com.hold.adega"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447976257942-2qe95ehh15r520r2pm2c33c2iu8knki2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.hold.adega",
+            "certificate_hash": "371af5d9618373fd26b49275e62f78846280250c"
+          }
+        },
+        {
+          "client_id": "447976257942-s148depkj495bsbslvudng7tb3lt4sk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0C7p-OkZj60pNSJ0cnJJQ8b-FKr9qOp0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447976257942-s148depkj495bsbslvudng7tb3lt4sk2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "447976257942-i58itmudn4c55od3jim32ggip5ncc1bh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.lemonHold.AdegaHoldLemon"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
