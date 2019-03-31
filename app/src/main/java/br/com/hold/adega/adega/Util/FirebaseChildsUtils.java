@@ -22,9 +22,10 @@ public class FirebaseChildsUtils {
     public static DatabaseReference getItemCarrinho(String uid ) {
 
         referenciaFirebase = null;
+        //                let pedidoRef = Database.database().reference().child("Usuarios").child((Auth.auth().currentUser?.uid)!).child("MeusPedidos").childByAutoId()
 
         if (referenciaFirebase == null) {
-            referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("MeusPedidos").child("Produto");
+            referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("MeusPedidos").push();
         }
         return referenciaFirebase;
     }

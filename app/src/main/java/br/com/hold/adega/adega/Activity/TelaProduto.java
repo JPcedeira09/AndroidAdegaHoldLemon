@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
+import br.com.hold.adega.adega.Model.ItensCarrinho;
 import br.com.hold.adega.adega.Model.Produto;
 import br.com.hold.adega.adega.Model.Usuario;
 import br.com.hold.adega.adega.Model.ValoresPedido;
@@ -30,7 +31,6 @@ public class TelaProduto extends AppCompatActivity {
     private Button adicionarCarrinho;
     private static Produto produto;
     private static Double quantidadePedido;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,24 +90,13 @@ public class TelaProduto extends AppCompatActivity {
         adicionarCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseChildsUtils.getItemCarrinho(FirebaseConfig.getFirebaseAutentificacao().getUid())
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
+                String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
 
+                DatabaseReference itemRefKey = FirebaseChildsUtils.getItemCarrinho(uid);
 
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
+                setItemPedido(uid,itemRefKey);
 
             }
         });
@@ -117,6 +106,51 @@ public class TelaProduto extends AppCompatActivity {
         Double qtd = Double.valueOf(quantidadePedido);
         total.setText("Total R$ "+  produto.getValor() * qtd );
     }
+
+
+        public static void setItemPedido(String uid , DatabaseReference referenceKey){
+
+            String key = referenceKey.getKey();
+            Integer qtd = quantidadePedido.intValue();
+            Double valorTotal = produto.getValor() * qtd;
+
+            ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
+
+            System.out.println("--------------------------------");
+            System.out.println("--------------------------------");
+            System.out.println(item.toString());
+            System.out.println("--------------------------------");
+            System.out.println("--------------------------------");
+
+            referenceKey.setValue(item);
+            getValorAtualDoPedido(uid,valorTotal);
+        }
+
+
+        public static void getValorAtualDoPedido(String uid, final Double valorTotalDosItensAtuais){
+            final DatabaseReference childValoresPedido = FirebaseChildsUtils.getValoresPedido(uid);
+
+            childValoresPedido
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ValoresPedido valorAtaul = dataSnapshot.getValue(ValoresPedido.class);
+                    Double valorTotalPedido = valorAtaul.getValorTotalProduto();
+                    Double valorAtualizadoPedido = (valorTotalPedido + valorTotalDosItensAtuais);
+
+                    valorAtaul.setValorTotalProduto(valorAtualizadoPedido);
+
+                    childValoresPedido.setValue(valorAtaul);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
 
 
 
