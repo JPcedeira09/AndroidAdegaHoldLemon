@@ -33,12 +33,12 @@ public class TelaProduto extends AppCompatActivity {
     private static Produto produto;
     private static Integer quantidadePedido;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_produto);
-        Intent intent = getIntent();
+
+      /*  Intent intent = getIntent();
         produto = (Produto) intent.getSerializableExtra("selecionado");
         System.out.println(produto.toString());
 
@@ -93,6 +93,7 @@ public class TelaProduto extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
                 String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
 
                 DatabaseReference itemRefKey = FirebaseChildsUtils.getItemCarrinho(uid);
@@ -102,6 +103,8 @@ public class TelaProduto extends AppCompatActivity {
                 finish();
 
                 Toast.makeText(TelaProduto.this,"Produto adicionado com sucesso",Toast.LENGTH_SHORT).show();
+
+
 
             }
         });
@@ -147,6 +150,46 @@ public class TelaProduto extends AppCompatActivity {
         });
 
     }
+
+
+
+        public static void setItemPedido(String uid , DatabaseReference referenceKey){
+
+            String key = referenceKey.getKey();
+            Integer qtd = quantidadePedido.intValue();
+            Double valorTotal = produto.getValor() * qtd;
+
+            ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
+
+
+            referenceKey.setValue(item);
+            getValorAtualDoPedido(uid,valorTotal);
+        }
+
+
+        public static void getValorAtualDoPedido(String uid, final Double valorTotalDosItensAtuais){
+            final DatabaseReference childValoresPedido = FirebaseChildsUtils.getValoresPedido(uid);
+
+            childValoresPedido
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    ValoresPedido valorAtaul = dataSnapshot.getValue(ValoresPedido.class);
+                    Double valorTotalPedido = valorAtaul.getValorTotalProduto();
+                    Double valorAtualizadoPedido = (valorTotalPedido + valorTotalDosItensAtuais);
+
+                    valorAtaul.setValorTotalProduto(valorAtualizadoPedido);
+
+                    childValoresPedido.setValue(valorAtaul);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });*/
+
+        }
 
 
 
