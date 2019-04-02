@@ -25,6 +25,8 @@ import br.com.hold.adega.adega.Adapter.AdapterCarrinho;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Listener.RecyclerItemClickListener;
 import br.com.hold.adega.adega.Model.ItensCarrinho;
+import br.com.hold.adega.adega.Model.Pedido;
+import br.com.hold.adega.adega.Model.Produto;
 import br.com.hold.adega.adega.Model.Usuario;
 import br.com.hold.adega.adega.Model.ValoresPedido;
 import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
@@ -34,9 +36,12 @@ import br.com.hold.adega.adega.Util.FirebaseUsuarioUtils;
 public class TelaCarrinho extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<ItensCarrinho> itensCarrinho = new ArrayList<>();
+    private static List<ItensCarrinho> itensCarrinho = new ArrayList<>();
     private TextView enderecoEntrega,valorTotal,cpf;
     private Button buttonCpf,buttonPedido;
+    private static Pedido pedido;
+    private static Produto produto;
+    private static ItensCarrinho carrinho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,6 @@ public class TelaCarrinho extends AppCompatActivity {
         enderecoEntrega = findViewById(R.id.textEnderecoEntrega);
         valorTotal = findViewById(R.id.textValorTotal);
         cpf = findViewById(R.id.textCPFCarrinho);
-        buttonCpf = findViewById(R.id.buttonTrocarCPF);
         buttonPedido = findViewById(R.id.buttonFazerPedido);
         buttonCpf = findViewById(R.id.buttonTrocarCPF);
 
@@ -135,20 +139,17 @@ public class TelaCarrinho extends AppCompatActivity {
                     }
                 });
 
-
         buttonPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
-
+                insertCarrinho();
+                insertHistorico();
             }
         });
 
-
-
     }
+
     //Fazendo o AlertDialog
     public void abrirAlert(View view){
 
@@ -160,12 +161,72 @@ public class TelaCarrinho extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+    }
 
+    private static void insertCarrinho(){
+        final DatabaseReference childPedido = FirebaseChildsUtils.getPedido();
+        String keyPedido = childPedido.getKey();
+        String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
+
+        setUsuario(uid,childPedido.child("DadosCliente"));
+        setItem(childPedido.child("Itens"),itensCarrinho);
+        setValorAtualDoPedido(FirebaseChildsUtils.getValoresPedido(uid),childPedido.child("ValoresPedido"));
+        childPedido.child("key").setValue(keyPedido);
+    }
+
+    private static void insertHistorico(){
+
+        String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
+        final DatabaseReference childPedido = FirebaseChildsUtils.getHistorico(uid);
+        String keyPedido = childPedido.getKey();
+
+        setUsuario(uid,childPedido.child("DadosCliente"));
+        setItem(childPedido.child("Itens"),itensCarrinho);
+        setValorAtualDoPedido(FirebaseChildsUtils.getValoresPedido(uid),childPedido.child("ValoresPedido"));
+        childPedido.child("key").setValue(keyPedido);
+    }
+
+    public static void setUsuario(String uid, final DatabaseReference referenceKey){
+
+       //Trazer dados do Firebase
+       FirebaseChildsUtils.getUsuario(FirebaseConfig.getFirebaseAutentificacao().getUid())
+               .addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       if (dataSnapshot.getValue() != null) {
+                           Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                           referenceKey.setValue(usuario);
+                       }
+                   }
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError databaseError) {
+                   }
+               });
+    }
+
+
+    public static void setItem(DatabaseReference referenceKey, List<ItensCarrinho> carrinho){
+
+        for(ItensCarrinho item : carrinho){
+            referenceKey.child(item.getKey()).setValue(item);
+        }
+    }
+
+    public static void setValorAtualDoPedido(DatabaseReference refLeitura, final DatabaseReference refInsert){
+
+        refLeitura.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ValoresPedido valoresPedido = dataSnapshot.getValue(ValoresPedido.class);
+                refInsert.setValue(valoresPedido);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
-
     }
 }

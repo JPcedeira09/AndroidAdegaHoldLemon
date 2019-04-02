@@ -9,7 +9,7 @@
         android:layout_height="150dp"
         android:background="@color/colorPrimaryDark"
         android:contentDescription="@string/app_name"
-        android:scaleType="center"
+        android:scaleType="centerInside"
         android:src="@drawable/house_beer" />
 
     <EditText

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +19,7 @@ import org.w3c.dom.Text;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
+import br.com.hold.adega.adega.Model.ItensCarrinho;
 import br.com.hold.adega.adega.Model.Produto;
 import br.com.hold.adega.adega.Model.Usuario;
 import br.com.hold.adega.adega.Model.ValoresPedido;
@@ -29,7 +31,7 @@ public class TelaProduto extends AppCompatActivity {
     private ImageView mais,menos;
     private Button adicionarCarrinho;
     private static Produto produto;
-    private static Double quantidadePedido;
+    private static Integer quantidadePedido;
 
 
     @Override
@@ -50,7 +52,7 @@ public class TelaProduto extends AppCompatActivity {
         mais = findViewById(R.id.imageMais);
         menos = findViewById(R.id.imageMenos);
         adicionarCarrinho = findViewById(R.id.buttonAdicionarCarrinho);
-        quantidadePedido = 1.0;
+        quantidadePedido = 1;
 
 
         descricao.setText(produto.getDescricao());
@@ -82,7 +84,6 @@ public class TelaProduto extends AppCompatActivity {
                     numero.setText(""+ quantidadePedido );
                     atualizaValorTotal();
                 }
-
             }
         });
 
@@ -90,24 +91,17 @@ public class TelaProduto extends AppCompatActivity {
         adicionarCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseChildsUtils.getItemCarrinho(FirebaseConfig.getFirebaseAutentificacao().getUid())
-                        .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
+                String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
 
+                DatabaseReference itemRefKey = FirebaseChildsUtils.getItemCarrinho(uid);
 
+                setItemPedido(uid,itemRefKey);
 
-                            }
+                finish();
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
+                Toast.makeText(TelaProduto.this,"Produto adicionado com sucesso",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -117,6 +111,43 @@ public class TelaProduto extends AppCompatActivity {
         Double qtd = Double.valueOf(quantidadePedido);
         total.setText("Total R$ "+  produto.getValor() * qtd );
     }
+
+    public static void setItemPedido(String uid , DatabaseReference referenceKey){
+
+        String key = referenceKey.getKey();
+        Integer qtd = quantidadePedido.intValue();
+        Double valorTotal = produto.getValor() * qtd;
+
+        ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
+
+        referenceKey.setValue(item);
+        getValorAtualDoPedido(uid,valorTotal);
+    }
+
+
+    public static void getValorAtualDoPedido(String uid, final Double valorTotalDosItensAtuais){
+        final DatabaseReference childValoresPedido = FirebaseChildsUtils.getValoresPedido(uid);
+
+        childValoresPedido.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ValoresPedido valorAtaul = dataSnapshot.getValue(ValoresPedido.class);
+                Double valorTotalPedido = valorAtaul.getValorTotalProduto();
+                Double valorAtualizadoPedido = (valorTotalPedido + valorTotalDosItensAtuais);
+
+                valorAtaul.setValorTotalProduto(valorAtualizadoPedido);
+
+                childValoresPedido.setValue(valorAtaul);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
 
 
 

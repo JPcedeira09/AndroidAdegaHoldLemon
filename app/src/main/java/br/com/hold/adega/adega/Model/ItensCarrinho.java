@@ -46,9 +46,15 @@ public class ItensCarrinho {
         this.totalItem = totalItem;
     }
 
+
+
     @Override
     public String toString() {
-        return "ItensCarrinho [qtd=" + qtd + ", nome=" + nome + ", totalItem=" + totalItem + "]";
+        return "ItensCarrinho{" +
+                "key='" + key + '\'' +
+                ", qtd=" + qtd +
+                ", nome='" + nome + '\'' +
+                ", totalItem=" + totalItem +
+                '}';
     }
-
 }

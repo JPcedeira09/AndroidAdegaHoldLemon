@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,15 +37,17 @@ import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
 public class MenuCliente extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private List<Produto> produtos = new ArrayList<>();
     private RecyclerView recyclerCardapio;
-    private DatabaseReference produtoRef;
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_cliente);
 
-        produtoRef = FirebaseConfig.getFirebase();
+        autenticacao = FirebaseAuth.getInstance();
         recyclerCardapio = findViewById(R.id.recyclerCardapio);
+
+
 
         //Configura recyclerView
         recyclerCardapio.setLayoutManager(new LinearLayoutManager(this));
@@ -83,8 +86,6 @@ public class MenuCliente extends AppCompatActivity implements NavigationView.OnN
                 produtos.clear();
                 for (DataSnapshot child: dataSnapshot.getChildren()){
                     Produto produto = child.getValue(Produto.class);
-                    System.out.println(child);
-                    System.out.println(produto);
                     produtos.add(produto);
                 }
                 adapterCardapio.notifyDataSetChanged();
@@ -134,9 +135,7 @@ public class MenuCliente extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         if (id == R.id.carrinho ){
             irCarrinho();
             return true;
@@ -155,16 +154,18 @@ public class MenuCliente extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            startActivity(new Intent(this, DadosPessoais.class));
+            startActivity(new Intent(this, FaleConosco.class));
 
 
 
         } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(this, JhoonyGostoso.class));
+            startActivity(new Intent(this, HistoricoPedidosCliente.class));
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
+            autenticacao.signOut();
+            startActivity(new Intent(getApplicationContext(), IntroCadastro.class));
 
         } else if (id == R.id.nav_share) {
 

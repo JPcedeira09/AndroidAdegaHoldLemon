@@ -45,7 +45,7 @@ public class DadosPessoais extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() !=null) {
+                if (dataSnapshot.getValue() != null) {
                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
                     cpf.setText(usuario.getCpf());
                     cep.setText(usuario.getCep());

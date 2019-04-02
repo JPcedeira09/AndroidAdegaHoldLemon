@@ -41,11 +41,12 @@ public class FaleConosco extends AppCompatActivity {
                     exibirMensagem("Informe o assunto!");
                 }
 
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "Guilherme","gui.ayres1995@gmail.com", null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
-                startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL  , new String[] { "houseBeer@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "oi ");
+
+                startActivity(Intent.createChooser(intent, "Email via..."));
 
             }
         });

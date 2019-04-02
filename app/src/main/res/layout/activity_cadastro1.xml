@@ -97,7 +97,7 @@
     <EditText
         android:id="@+id/editEndereco"
         android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="Digite o seu endereço"

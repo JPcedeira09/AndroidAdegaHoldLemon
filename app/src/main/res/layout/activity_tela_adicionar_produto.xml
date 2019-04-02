@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+       <EditText
+           android:id="@+id/editTextNomeProduto"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:hint="Nome do Produto"
+           android:textSize="24sp" />
+
+<ImageView
+android:id="@+id/imagemProdutoEstoqueAdd"
+android:layout_width="match_parent"
+android:layout_height="200dp"
+android:layout_marginTop="10dp"
+app:srcCompat="@android:drawable/ic_menu_camera" />
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/InformacoesProduto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Descriçao"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/quantidadeProdutoEstoqueAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Quantidade"
+        android:inputType="number"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTextValorProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Valor"
+        android:textSize="24sp" />
+
+<Button
+    android:id="@+id/buttonAddEstoque"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:text="Adicionar ao estoque"
+    android:textColor="@color/colorAccent" />
+
+
+</LinearLayout>
+
+    </LinearLayout>

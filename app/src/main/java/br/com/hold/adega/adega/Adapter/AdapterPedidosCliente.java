@@ -2,6 +2,7 @@ package br.com.hold.adega.adega.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +12,16 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.hold.adega.R;
+import br.com.hold.adega.adega.Model.Pedido;
 import br.com.hold.adega.adega.Model.ValoresPedido;
 
 public class AdapterPedidosCliente extends RecyclerView.Adapter<AdapterPedidosCliente.MyViewHolder> {
 
 
-    private List<ValoresPedido> pedidos;
+    private List<Pedido> pedidos;
     private Context context;
 
-    public AdapterPedidosCliente(List<ValoresPedido> pedidos, Context context) {
+    public AdapterPedidosCliente(List<Pedido> pedidos, Context context) {
         this.pedidos = pedidos;
         this.context = context;
     }
@@ -27,17 +29,18 @@ public class AdapterPedidosCliente extends RecyclerView.Adapter<AdapterPedidosCl
 
     @NonNull
     @Override
-    public AdapterPedidosCliente.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public AdapterPedidosCliente.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_historico_pedido, parent, false);
         return new MyViewHolder(itemLista);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterPedidosCliente.MyViewHolder holder, int i) {
-        ValoresPedido pedido = pedidos.get(i);
-        holder.statusPedido.setText(pedido.getStatusPedido());
-        holder.valorPedido.setText("R$ " + pedido.getValorTotalProduto());
-        holder.data.setText(pedido.getDataPedido());
+    public void onBindViewHolder(@NonNull AdapterPedidosCliente.MyViewHolder holder, int position) {
+        Pedido pedido = pedidos.get(position);
+        holder.numeroPedido.setText(position + pedido.getUsuario().getNome());
+        holder.statusPedido.setText(pedido.getValoresPedido().getStatusPedido());
+        holder.valorPedido.setText("R$ " + pedido.getValoresPedido().getValorTotalProduto());
+//        holder.data.set(pedido.getValoresPedido().getDataPedido());
 
     }
 
@@ -52,7 +55,7 @@ public class AdapterPedidosCliente extends RecyclerView.Adapter<AdapterPedidosCl
         TextView numeroPedido;
         TextView valorPedido;
         TextView statusPedido;
-        TextView data;
+//        CardView data;
 
 
         public MyViewHolder(View itemView) {
@@ -61,7 +64,7 @@ public class AdapterPedidosCliente extends RecyclerView.Adapter<AdapterPedidosCl
             numeroPedido = itemView.findViewById(R.id.textNumeroPedido);
             valorPedido = itemView.findViewById(R.id.textValorPedido);
             statusPedido = itemView.findViewById(R.id.textStatusPedido);
-            data = itemView.findViewById(R.id.dataPedido);
+//            data = itemView.findViewById(R.id.dataPedido);
 
         }
     }

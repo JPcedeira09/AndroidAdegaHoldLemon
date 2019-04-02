@@ -24,7 +24,7 @@ public class FirebaseChildsUtils {
         referenciaFirebase = null;
 
         if (referenciaFirebase == null) {
-            referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("MeusPedidos").child("Produto");
+            referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("MeusPedidos").push();
         }
         return referenciaFirebase;
     }
@@ -32,22 +32,41 @@ public class FirebaseChildsUtils {
 
     public static DatabaseReference getPedidos() {
         if (referenciaFirebase == null) {
-            return FirebaseConfig.getFirebase().child("Pedidos");
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos");
         }
         return referenciaFirebase;
 
     }
 
-    public static DatabaseReference getPedido(String key) {
+    public static DatabaseReference getPedido() {
 
         referenciaFirebase = null;
 
         if (referenciaFirebase == null) {
-            return FirebaseConfig.getFirebase().child("Pedidos").child(key);
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").push();
         }
         return  referenciaFirebase;
     }
 
+    public static DatabaseReference getHistorico(String uid) {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            return FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("HistoricoPedidos").push();
+        }
+        return  referenciaFirebase;
+    }
+
+    public static DatabaseReference getRetornoHistorico(String uid) {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            return FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("HistoricoPedidos");
+        }
+        return  referenciaFirebase;
+    }
 
     public static DatabaseReference getProdutos() {
 
@@ -64,7 +83,7 @@ public class FirebaseChildsUtils {
         referenciaFirebase = null;
 
         if (referenciaFirebase == null) {
-            referenciaFirebase = FirebaseConfig.getFirebase().child("Produtos").child(nomeProduto);
+            referenciaFirebase = FirebaseConfig.getFirebase().child("Adega").child("Produtos").child(nomeProduto);
         }
         return referenciaFirebase;
     }
@@ -85,6 +104,17 @@ public class FirebaseChildsUtils {
             referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("ValoresPedido");
         }
         return referenciaFirebase;
+    }
+
+    public static DatabaseReference getDadosAdega() {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            referenciaFirebase = FirebaseConfig.getFirebase().child("Adega").child("DadosAdega");
+        }
+        return referenciaFirebase;
+
     }
 
 }

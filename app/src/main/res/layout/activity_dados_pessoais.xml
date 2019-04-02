@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".adega.Fragment.DadosPessoais">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +16,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
             android:text="CPF"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtCpf"
@@ -40,8 +40,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="CEP"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtCep"
@@ -63,8 +64,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="Endereço"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtEndereco"
@@ -86,8 +88,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="Número"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtNumero"
@@ -109,8 +112,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="Complemento"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtComplemento"
@@ -132,8 +136,9 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:text="Celular"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTxtCelular"

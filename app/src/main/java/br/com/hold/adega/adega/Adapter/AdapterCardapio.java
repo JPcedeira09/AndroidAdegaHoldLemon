@@ -65,21 +65,4 @@ public class AdapterCardapio  extends RecyclerView.Adapter<AdapterCardapio.MyVie
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

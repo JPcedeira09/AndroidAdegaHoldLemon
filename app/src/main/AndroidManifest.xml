@@ -4,12 +4,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/house_beer"
+        android:label="House beer"
+        android:roundIcon="@drawable/house_beer"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adega.Activity.FaleConosco"></activity>
+        <activity android:name=".adega.Activity.TelaPedidos"></activity>
+        <activity android:name=".adega.Activity.EstoqueTelaProduto" />
+        <activity android:name=".adega.Activity.TelaAdicionarProduto" />
+        <activity android:name=".adega.Activity.DadosPessoaisDono" />
+        <activity android:name=".adega.Activity.PedidosEstoque" />
+        <activity
+            android:name=".adega.Activity.MenuDono"
+            android:label="House beer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".adega.Activity.FaleConosco" />
         <activity android:name=".adega.Activity.HistoricoPedidosCliente" />
         <activity android:name=".adega.Activity.TelaCarrinho" />
         <activity android:name=".adega.Activity.DadosPessoais" />
