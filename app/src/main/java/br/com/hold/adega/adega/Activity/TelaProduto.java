@@ -163,7 +163,7 @@ public class TelaProduto extends AppCompatActivity {
 
 
             referenceKey.setValue(item);
-            getValorAtualDoPedido(uid,valorTotal);
+            getValorAtualDoPedido(valorTotal,uid);
         }
 
 
