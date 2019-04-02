@@ -38,7 +38,7 @@ public class TelaProduto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_produto);
 
-      /*  Intent intent = getIntent();
+        Intent intent = getIntent();
         produto = (Produto) intent.getSerializableExtra("selecionado");
         System.out.println(produto.toString());
 
@@ -187,7 +187,7 @@ public class TelaProduto extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            });*/
+            });
 
         }
 
