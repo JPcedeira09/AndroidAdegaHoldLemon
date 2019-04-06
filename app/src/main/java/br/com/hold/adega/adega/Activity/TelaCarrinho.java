@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -145,6 +146,9 @@ public class TelaCarrinho extends AppCompatActivity {
 
                 insertCarrinho();
                 insertHistorico();
+                finish();
+                Toast.makeText(TelaCarrinho.this, " Pedido Realizado com sucesso ",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

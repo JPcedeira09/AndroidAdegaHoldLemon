@@ -1,7 +1,9 @@
 package br.com.hold.adega.adega.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,10 +18,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.hold.adega.R;
+import br.com.hold.adega.adega.Activity.TelaPedidos;
 import br.com.hold.adega.adega.Adapter.AdapterPedidosRealizados;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Listener.RecyclerItemClickListener;
@@ -36,13 +40,7 @@ public class PedidosRealizadosragment extends Fragment {
 
     private DatabaseReference firebaseref;
     private RecyclerView recyclerPedidos;
-    private List<Pedido> listaPedidos;
-
-
-    public PedidosRealizadosragment() {
-        // Required empty public constructor
-    }
-
+    private static List<Pedido> listaPedidos = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,14 +52,20 @@ public class PedidosRealizadosragment extends Fragment {
         recyclerPedidos = view.findViewById(R.id.recylerPedidosRealizados);
         firebaseref = FirebaseConfig.getFirebase();
 
-
-
         //Evento de click no recylerView
         recyclerPedidos.addOnItemTouchListener( new RecyclerItemClickListener(getActivity(), recyclerPedidos,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        Pedido pedido = listaPedidos.get(position);
+                        Intent intent = new Intent(getActivity(), TelaPedidos.class);
+
+                        System.out.println(pedido);
+
+                        intent.putExtra("selecionado",pedido);
+                        startActivity(intent);
                     }
+
                     @Override
                     public void onLongItemClick(View view, int position) {
                     }
@@ -72,13 +76,7 @@ public class PedidosRealizadosragment extends Fragment {
                     }
                 }));
 
-
-        //listaPedidos = PedidoFirebase.listAll();
-
         //Recupera dados do Firebase
-
-        if (listaPedidos == null) {
-            listaPedidos = new ArrayList<>();
 
             //Configuraçoes do RecyclerView
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -89,6 +87,7 @@ public class PedidosRealizadosragment extends Fragment {
 
             FirebaseChildsUtils.getPedidos()
                     .addValueEventListener(new ValueEventListener() {
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             listaPedidos.clear();
@@ -102,26 +101,20 @@ public class PedidosRealizadosragment extends Fragment {
                                 for(DataSnapshot dsItem : itensDS.getChildren()){
                                     ItensCarrinho itensCarrinho = dsItem.getValue(ItensCarrinho.class);
                                     itensCarrinhos.add(itensCarrinho);
-
-                                    System.out.println(ds);
-                                    System.out.println(itensCarrinhos);
-
                                 }
+
                                 pedido.setItensCarrinho(itensCarrinhos);
                                 final DataSnapshot valoresPedidoDS = ds.child("ValoresPedido");
                                 ValoresPedido valoresPedido = valoresPedidoDS.getValue(ValoresPedido.class);
                                 pedido.setValoresPedido(valoresPedido);
-                                System.out.println(ds);
-                                System.out.println(valoresPedido);
 
                                 final DataSnapshot UsuariosDS = ds.child("DadosCliente");
                                 Usuario usuario = UsuariosDS.getValue(Usuario.class);
                                 pedido.setUsuario(usuario);
-                                System.out.println(ds);
-                                System.out.println(usuario);
 
-
+                                pedido.setKey(ds.child("key").getValue().toString());
                                 listaPedidos.add(pedido);
+                                System.out.println(pedido.toString());
                             }
 
                             adapterPedidosRealizados.notifyDataSetChanged();
@@ -133,7 +126,6 @@ public class PedidosRealizadosragment extends Fragment {
                         }
                     });
 
-        }
 
         return view;
     }

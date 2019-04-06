@@ -1,6 +1,8 @@
 package br.com.hold.adega.adega.Model;
 
-public class ItensCarrinho {
+import java.io.Serializable;
+
+public class ItensCarrinho implements Serializable {
 
     private String key;
     private Integer qtd;

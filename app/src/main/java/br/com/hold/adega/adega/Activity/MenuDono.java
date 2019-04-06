@@ -70,15 +70,14 @@ public class MenuDono extends AppCompatActivity implements NavigationView.OnNavi
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.viewPage, new PedidosRealizadosragment()).commit();
 
-
     }
     /**
      * Metodo responsavel por tratar eventos de click na BottomNavigation
      *
      * @param viewEx
      */
-
     private void habilitarNavegaçao(BottomNavigationViewEx viewEx) {
+
         viewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

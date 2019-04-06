@@ -22,7 +22,6 @@ public class FirebaseChildsUtils {
     public static DatabaseReference getItemCarrinho(String uid ) {
 
         referenciaFirebase = null;
-        //                let pedidoRef = Database.database().reference().child("Usuarios").child((Auth.auth().currentUser?.uid)!).child("MeusPedidos").childByAutoId()
 
         if (referenciaFirebase == null) {
             referenciaFirebase = FirebaseConfig.getFirebase().child("Usuarios").child(uid).child("MeusPedidos").push();
@@ -49,6 +48,15 @@ public class FirebaseChildsUtils {
         return  referenciaFirebase;
     }
 
+    public static DatabaseReference getOPedido(String key) {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").child(key);
+        }
+        return  referenciaFirebase;
+    }
     public static DatabaseReference getHistorico(String uid) {
 
         referenciaFirebase = null;

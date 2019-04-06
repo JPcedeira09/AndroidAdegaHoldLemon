@@ -1,6 +1,8 @@
 package br.com.hold.adega.adega.Model;
 
-public class ValoresPedido {
+import java.io.Serializable;
+
+public class ValoresPedido implements Serializable {
 
     private Double valorTotalProduto;
     private String dataPedido;

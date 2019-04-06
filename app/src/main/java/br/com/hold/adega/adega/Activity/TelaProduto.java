@@ -151,47 +151,4 @@ public class TelaProduto extends AppCompatActivity {
 
     }
 
-
-
-        public static void setItemPedido(String uid , DatabaseReference referenceKey){
-
-            String key = referenceKey.getKey();
-            Integer qtd = quantidadePedido.intValue();
-            Double valorTotal = produto.getValor() * qtd;
-
-            ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
-
-
-            referenceKey.setValue(item);
-            getValorAtualDoPedido(valorTotal,uid);
-        }
-
-
-        public static void getValorAtualDoPedido(String uid, final Double valorTotalDosItensAtuais){
-            final DatabaseReference childValoresPedido = FirebaseChildsUtils.getValoresPedido(uid);
-
-            childValoresPedido
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    ValoresPedido valorAtaul = dataSnapshot.getValue(ValoresPedido.class);
-                    Double valorTotalPedido = valorAtaul.getValorTotalProduto();
-                    Double valorAtualizadoPedido = (valorTotalPedido + valorTotalDosItensAtuais);
-
-                    valorAtaul.setValorTotalProduto(valorAtualizadoPedido);
-
-                    childValoresPedido.setValue(valorAtaul);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-        }
-
-
-
-
 }

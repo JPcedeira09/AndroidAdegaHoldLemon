@@ -1,8 +1,18 @@
 package br.com.hold.adega.adega.Model;
 
-import java.util.List;
 
-public class Pedido {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class Pedido implements Serializable {
+
+
 
     private String key;
     private ValoresPedido valoresPedido;
@@ -20,6 +30,9 @@ public class Pedido {
     public Pedido() {
         super();
     }
+
+
+
 
     public String getKey() {
         return key;
@@ -51,5 +64,6 @@ public class Pedido {
         return "Pedido [key=" + key + ", valoresPedido=" + valoresPedido + ", usuario=" + usuario + ", itensCarrinho="
                 + itensCarrinho + "]";
     }
+
 
 }

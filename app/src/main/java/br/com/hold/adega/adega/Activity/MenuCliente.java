@@ -154,7 +154,7 @@ public class MenuCliente extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            startActivity(new Intent(this, FaleConosco.class));
+            startActivity(new Intent(this, DadosPessoais.class));
 
 
 

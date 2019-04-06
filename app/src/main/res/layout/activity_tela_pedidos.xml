@@ -61,7 +61,7 @@
             <include layout="@layout/divisor" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerPedido"
+                android:id="@+id/recyclerItemPedido"
                 android:layout_width="match_parent"
                 android:layout_height="117dp" />
 
@@ -78,14 +78,12 @@
 
                     <TextView
                         android:id="@+id/textTaxaEntrega"
-                        android:layout_width="wrap_content"
+                        android:layout_width="149dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginBottom="12dp"
                         android:text="Taxa de entrega"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textValorTotal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

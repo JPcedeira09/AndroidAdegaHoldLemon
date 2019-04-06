@@ -29,11 +29,13 @@ public class EstoqueTelaProduto extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estoque_tela_produto);
         //Chama o item que foi  clicado
         Intent intent = getIntent();
         produto = (Produto) intent.getSerializableExtra("selecionado");
+
         System.out.println(produto.toString());
 
         //Inicializar componentes
@@ -47,21 +49,18 @@ public class EstoqueTelaProduto extends AppCompatActivity {
         FirebaseChildsUtils.getProduto(produto.getNome()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 if (dataSnapshot.getValue() != null){
                     Produto produto = dataSnapshot.getValue(Produto.class);
                     alteraNome.setText(produto.getNome());
                     alteraDescricao.setText(produto.getDescricao());
                     alteraQuantidade.setText(String.valueOf(produto.getQuantidade()));
                     alteraValor.setText(String.valueOf(produto.getValor()) );
-
                 }
-
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -79,11 +78,20 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                    if (!qtd.isEmpty()){
                     if (!valor.isEmpty()){
 
-                        Produto produto = new Produto();
+                        int result = Integer.parseInt(qtd);
+
+                        System.out.println("--------------");
+                        System.out.println("--------------");
+                        System.out.println(result);
+                        System.out.println("--------------");
+                        System.out.println("--------------");
+
                         produto.setNome(nome);
                         produto.setDescricao(descricao);
-                        produto.setQuantidade(Integer.getInteger(qtd));
+                        produto.setQuantidade(result);
                         produto.setValor(Double.parseDouble(valor));
+
+                        System.out.print(produto.toString());
                         update(produto);
                         finish();
 
@@ -97,7 +105,6 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                        Toast.makeText(EstoqueTelaProduto.this,"Digite a quantidade do produto ",Toast.LENGTH_SHORT).show();
                    }
 
-
                   }else {
                       Toast.makeText(EstoqueTelaProduto.this,"Digite a descrição do produto ",Toast.LENGTH_SHORT).show();
                   }
@@ -105,27 +112,31 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                 }else {
                     Toast.makeText(EstoqueTelaProduto.this,"Digite o nome  do produto ",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 
+    public static void update(Produto p) {
 
-    public  void update(Produto produto) {
+        Map<String,Object> produtoMap = new HashMap<String,Object>();
 
-        Map<String,Object> usuarioMap = new HashMap<String,Object>();
-        usuarioMap.put("nome", produto.getNome());
-        usuarioMap.put("descricao", produto.getDescricao());
-        usuarioMap.put("quantidade", produto.getQuantidade());
-        usuarioMap.put("valor",produto.getValor());
+        produtoMap.put("nome", p.getNome());
+        produtoMap.put("descricao", p.getDescricao());
 
+        if ((p.getQuantidade() == null) || p.getQuantidade().toString().isEmpty()) {
+            produtoMap.put("quantidade", produto.getQuantidade());
+        } else {
+            produtoMap.put("quantidade", p.getQuantidade());
+        }
 
+        produtoMap.put("valor",p.getValor());
+
+        System.out.println(produtoMap.toString());
         FirebaseConfig.getFirebase()
                 .child("Adega")
                 .child("Produtos")
                 .child(produto.getNome())
-                .updateChildren(usuarioMap);
+                .updateChildren(produtoMap);
     }
+
 }
