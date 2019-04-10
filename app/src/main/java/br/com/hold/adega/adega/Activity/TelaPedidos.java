@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,6 +36,24 @@ public class TelaPedidos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_pedidos);
 
+        //Sumir a ActionBar
+        getSupportActionBar().hide();
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Detalhe do Pedido");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuDono();
+                }
+            });
+
+        }
+
         Intent intent = getIntent();
         pedido = (Pedido) intent.getSerializableExtra("selecionado");
 
@@ -61,7 +80,7 @@ public class TelaPedidos extends AppCompatActivity {
         recyclerPedidos.setAdapter(adapterTelaPedido);
 
         //Recupera dados do Firebase
-        FirebaseChildsUtils.getOPedido(pedido.getKey()).addValueEventListener(new ValueEventListener() {
+    /*    FirebaseChildsUtils.getOPedido(pedido.getKey()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         itensCarrinho.clear();
@@ -79,7 +98,7 @@ public class TelaPedidos extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                });
+                });*/
 
 
 //        FirebaseChildsUtils.getUsuario(FirebaseConfig.getFirebaseAutentificacao().getUid())
@@ -117,5 +136,9 @@ public class TelaPedidos extends AppCompatActivity {
 //                });
 
 
+    }
+
+    private void abrirMenuDono(){
+        startActivity(new Intent(TelaPedidos.this, MenuDono.class));
     }
 }

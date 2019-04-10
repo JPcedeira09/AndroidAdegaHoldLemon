@@ -1,5 +1,6 @@
 package br.com.hold.adega.adega.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,25 @@ public class TelaAdicionarProduto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_produto);
+
+        //Sumir a ActionBar
+        getSupportActionBar().hide();
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Adicionar Produto");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuDono();
+                }
+            });
+
+        }
+
 
         editNomeProduto = findViewById(R.id.editTextNomeProduto);
         editQuantidade = findViewById(R.id.editTextDescricao);
@@ -81,5 +101,9 @@ public class TelaAdicionarProduto extends AppCompatActivity {
                 .child("Produtos")
                 .child(produto.getNome())
                 .setValue(produto);
+    }
+
+    private void abrirMenuDono(){
+        startActivity(new Intent(TelaAdicionarProduto.this, MenuDono.class));
     }
 }

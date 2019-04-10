@@ -38,6 +38,26 @@ public class EstoqueTelaProduto extends AppCompatActivity {
 
         System.out.println(produto.toString());
 
+
+        //Sumir a ActionBar
+        getSupportActionBar().hide();
+
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Atualizar Produto");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuDono();
+                }
+            });
+
+        }
+
         //Inicializar componentes
         alteraNome = findViewById(R.id.editTextAlteraNomeProduto);
         alteraDescricao = findViewById(R.id.editTextAlteraDescricao);
@@ -114,6 +134,10 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void abrirMenuDono(){
+        startActivity(new Intent(EstoqueTelaProduto.this, MenuDono.class));
     }
 
     public static void update(Produto p) {

@@ -1,10 +1,12 @@
 package br.com.hold.adega.adega.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +37,21 @@ public class HistoricoPedidosCliente extends AppCompatActivity {
 
         //sumir a toolbar
         getSupportActionBar().hide();
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Histórico do Pedido");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuCliente();
+                }
+            });
+
+        }
 
         //Inicializar os compomentes
         recyclerPedidos = findViewById(R.id.recyclerPedidos);
@@ -96,5 +113,9 @@ public class HistoricoPedidosCliente extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void abrirMenuCliente(){
+        startActivity(new Intent(HistoricoPedidosCliente.this, MenuCliente.class));
     }
 }

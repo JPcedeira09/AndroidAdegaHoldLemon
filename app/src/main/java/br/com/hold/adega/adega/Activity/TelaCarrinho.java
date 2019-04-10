@@ -1,6 +1,7 @@
 package br.com.hold.adega.adega.Activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,22 @@ public class TelaCarrinho extends AppCompatActivity {
 
         //sumir a toolbar
         getSupportActionBar().hide();
+
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Carrinho");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    voltarMenuCliente();
+                }
+            });
+
+        }
 
         //Inicializar os componentes
         recyclerView = findViewById(R.id.recyclerCarrinho);
@@ -167,6 +184,10 @@ public class TelaCarrinho extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void voltarMenuCliente(){
+        startActivity(new Intent(TelaCarrinho.this, MenuCliente.class));
     }
 
     private static void insertCarrinho(){
