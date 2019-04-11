@@ -6,60 +6,60 @@
     android:layout_marginBottom="5dp"
     android:orientation="vertical">
 
-<android.support.constraint.ConstraintLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-<TextView
-    android:id="@+id/textNomeProdutoCarrinho"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="9dp"
-    android:layout_marginRight="9dp"
-    android:paddingLeft="10dp"
-    android:text="Nome/quantidade do produto"
-    android:textSize="18sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/textValorProdutoCarrinho"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/include" />
+        <TextView
+            android:id="@+id/textNomeProdutoCarrinho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:paddingLeft="10dp"
+            android:text="Nome/quantidade do produto"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textValorProdutoCarrinho"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
 
-<TextView
-    android:id="@+id/textValorProdutoCarrinho"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="9dp"
-    android:layout_marginLeft="9dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginRight="8dp"
-    android:paddingRight="20dp"
-    android:text="R$ 10,00"
-    android:textSize="18sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/textView23"
-    app:layout_constraintStart_toEndOf="@+id/textNomeProdutoCarrinho"
-    app:layout_constraintTop_toBottomOf="@+id/include" />
+        <TextView
+            android:id="@+id/textValorProdutoCarrinho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="2dp"
+            android:paddingRight="20dp"
+            android:text="R$ 10,00"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textNomeProdutoCarrinho"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
 
-<TextView
-    android:id="@+id/textView23"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="3dp"
-    android:layout_marginLeft="3dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="1dp"
-    android:layout_marginRight="1dp"
-    android:textSize="18sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/textValorProdutoCarrinho"
-    app:layout_constraintTop_toBottomOf="@+id/include" />
+        <TextView
+            android:id="@+id/icone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableLeft="@drawable/ic_more_vert_black_24dp"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textValorProdutoCarrinho"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<include
-    android:id="@+id/include"
-    layout="@layout/divisor" />
 
-</android.support.constraint.ConstraintLayout>
+        <include
+            android:id="@+id/include"
+            layout="@layout/divisor" />
+
+    </android.support.constraint.ConstraintLayout>
     </LinearLayout>

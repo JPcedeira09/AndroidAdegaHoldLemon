@@ -60,7 +60,7 @@ public class PedidosRealizadosragment extends Fragment {
                         Pedido pedido = listaPedidos.get(position);
                         Intent intent = new Intent(getActivity(), TelaPedidos.class);
 
-                        System.out.println(pedido);
+
 
                         intent.putExtra("selecionado",pedido);
                         startActivity(intent);
@@ -114,7 +114,7 @@ public class PedidosRealizadosragment extends Fragment {
 
                                 pedido.setKey(ds.child("key").getValue().toString());
                                 listaPedidos.add(pedido);
-                                System.out.println(pedido.toString());
+
                             }
 
                             adapterPedidosRealizados.notifyDataSetChanged();

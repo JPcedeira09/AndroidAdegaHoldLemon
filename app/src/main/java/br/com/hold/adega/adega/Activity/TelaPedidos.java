@@ -38,10 +38,6 @@ public class TelaPedidos extends AppCompatActivity {
         Intent intent = getIntent();
         pedido = (Pedido) intent.getSerializableExtra("selecionado");
 
-        System.out.println(pedido.toString());
-        System.out.println("___________________________________________________________________________--");
-        System.out.println("-----------------------------------------------------");
-        System.out.println(pedido.toString());
 
 
         //Inicializar Componentes
@@ -61,25 +57,25 @@ public class TelaPedidos extends AppCompatActivity {
         recyclerPedidos.setAdapter(adapterTelaPedido);
 
         //Recupera dados do Firebase
-        FirebaseChildsUtils.getOPedido(pedido.getKey()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        itensCarrinho.clear();
-                        for (DataSnapshot child: dataSnapshot.getChildren()){
-                            ItensCarrinho carrinho = child.getValue(ItensCarrinho.class);
-                            itensCarrinho.add(carrinho);
-                        }
-
-
-                        adapterTelaPedido.notifyDataSetChanged();
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+//        FirebaseChildsUtils.getOPedido(pedido.getKey()).addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        itensCarrinho.clear();
+//                        for (DataSnapshot child: dataSnapshot.getChildren()){
+//                            ItensCarrinho carrinho = child.getValue(ItensCarrinho.class);
+//                            itensCarrinho.add(carrinho);
+//                        }
+//
+//
+//                        adapterTelaPedido.notifyDataSetChanged();
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
 
 
 //        FirebaseChildsUtils.getUsuario(FirebaseConfig.getFirebaseAutentificacao().getUid())

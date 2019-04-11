@@ -73,6 +73,8 @@ public class TelaCarrinho extends AppCompatActivity {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+
+
                     }
                     @Override
                     public void onLongItemClick(View view, int position) {
@@ -152,10 +154,21 @@ public class TelaCarrinho extends AppCompatActivity {
             }
         });
 
+        buttonCpf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirAlert();
+
+
+            }
+        });
+
+
+
     }
 
     //Fazendo o AlertDialog
-    public void abrirAlert(View view){
+    public void abrirAlert(){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
@@ -164,6 +177,8 @@ public class TelaCarrinho extends AppCompatActivity {
         dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(TelaCarrinho.this,"Produto Excluido com sucesso ",
+                        Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -233,4 +248,8 @@ public class TelaCarrinho extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }

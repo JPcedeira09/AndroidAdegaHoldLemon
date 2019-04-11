@@ -1,6 +1,8 @@
 package br.com.hold.adega.adega.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
 import br.com.hold.adega.R;
+import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Model.ItensCarrinho;
 import br.com.hold.adega.adega.Model.Produto;
 
@@ -41,6 +46,24 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
         ItensCarrinho carrinho = itensCarrinhos.get(position);
         holder.nome.setText(carrinho.getQtd()+"X "+carrinho.getNome() );
         holder.valor.setText("R$" + carrinho.getTotalItem());
+        holder.icone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+
+                dialog.setTitle("OLHA ESSA PORRA");
+                dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.create();
+                dialog.show();
+
+            }
+        });
 
     }
 
@@ -56,14 +79,26 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
 
         TextView nome;
         TextView valor;
+        TextView icone;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             nome = itemView.findViewById(R.id.textNomeProdutoCarrinho);
             valor = itemView.findViewById(R.id.textValorProdutoCarrinho);
+            icone = itemView.findViewById(R.id.icone);
         }
 
+
+    }
+    public void remover(){
+        DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
+        ItensCarrinho carrinho = new ItensCarrinho();
+        DatabaseReference  produtoRef =firebaseRef.child("Usuario")
+                .child(FirebaseConfig.getFirebaseAutentificacao().getUid())
+                .child("MeusPedidos")
+                .child(carrinho.getKey());
+        produtoRef.removeValue();
 
     }
 }
