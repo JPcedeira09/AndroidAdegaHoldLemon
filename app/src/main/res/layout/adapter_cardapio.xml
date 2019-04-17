@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="0"
         android:orientation="vertical">
 
@@ -23,6 +23,7 @@
             android:id="@+id/textNProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="0"
             android:text="Nome do Produto:"
             android:textSize="18sp" />
@@ -31,6 +32,7 @@
             android:id="@+id/textValorProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="0dp"
             android:text="Valor:"
@@ -40,4 +42,5 @@
     </LinearLayout>
 
 
-</LinearLayout>
+
+    </LinearLayout>

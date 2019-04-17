@@ -39,7 +39,7 @@ public class AdapterPedidosRealizados  extends RecyclerView.Adapter<AdapterPedid
 
         Pedido pedido = listaPedidos.get(position);
 //        holder.textTempoEntrega.setText(pedido.getValoresPedido().getDataPedido());
-        holder.textPedidoN.setText(position + pedido.getUsuario().getNome());
+        holder.textPedidoN.setText("#" + position +" " +pedido.getUsuario().getNome());
         holder.textValor.setText("R$ " + String.valueOf(pedido.getValoresPedido().getValorTotalProduto()));
         holder.textStatus.setText(pedido.getValoresPedido().getStatusPedido());
 //        holder.textDistancia.setText(pedido.);
