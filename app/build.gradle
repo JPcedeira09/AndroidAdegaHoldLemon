@@ -45,7 +45,11 @@ dependencies {
     //Mercado Pago
     //    implementation 'com.mercadopago.android.px:checkout:4.0.+'
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    // FirebaseUI Storage only
+    implementation 'com.firebaseui:firebase-ui-storage:3.0.0'
 
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databinds
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'

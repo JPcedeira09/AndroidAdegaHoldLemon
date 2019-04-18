@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
@@ -14,6 +18,7 @@ import br.com.hold.adega.adega.Model.Produto;
 
 public class TelaAdicionarProduto extends AppCompatActivity {
     private EditText editNomeProduto,editQuantidade,editDescricao,editValor;
+    private ImageView imagemProdutoAdd;
     private Button adiciona;
 
     @Override
@@ -39,7 +44,7 @@ public class TelaAdicionarProduto extends AppCompatActivity {
 
         }
 
-
+        imagemProdutoAdd = findViewById(R.id.imagemProdutoEstoqueAdd);
         editNomeProduto = findViewById(R.id.editTextNomeProduto);
         editQuantidade = findViewById(R.id.editTextDescricao);
         editDescricao = findViewById(R.id.quantidadeProdutoEstoqueAdd);
@@ -93,7 +98,15 @@ public class TelaAdicionarProduto extends AppCompatActivity {
             }
         });
 
+
+
     }
+
+    /*public void loadWithGlide(){
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+    }*/
 
     public static void create(Produto produto){
         FirebaseConfig.getFirebase()

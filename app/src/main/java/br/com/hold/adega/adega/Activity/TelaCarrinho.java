@@ -147,7 +147,7 @@ public class TelaCarrinho extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         ValoresPedido valoresPedido = dataSnapshot.getValue(ValoresPedido.class);
-                        valorTotal.setText(String.valueOf(valoresPedido.getValorTotalProduto()));
+                        valorTotal.setText(String.valueOf("R$"+ valoresPedido.getValorTotalProduto()));
 
                     }
 
