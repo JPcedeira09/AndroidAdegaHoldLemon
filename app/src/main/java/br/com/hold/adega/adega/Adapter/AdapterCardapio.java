@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import br.com.hold.adega.R;
@@ -39,6 +41,11 @@ public class AdapterCardapio  extends RecyclerView.Adapter<AdapterCardapio.MyVie
         Produto produto = produtos.get(position);
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$"+ String.valueOf(produto.getValor()));
+        Picasso.get()
+                .load(produto.getImagemProduto())
+                .fit()
+                .centerCrop()
+                .into(holder.foto);
 
     }
 
@@ -55,6 +62,7 @@ public class AdapterCardapio  extends RecyclerView.Adapter<AdapterCardapio.MyVie
         TextView nome;
         TextView valor;
         ImageView foto;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);

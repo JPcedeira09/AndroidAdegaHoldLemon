@@ -17,6 +17,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class EstoqueFragment extends Fragment {
     private RecyclerView recyclerProdutos;
     private List<Produto> produtos = new ArrayList<>();
 
+    private StorageReference storage;
 
     public EstoqueFragment() {
     }
@@ -52,6 +55,10 @@ public class EstoqueFragment extends Fragment {
 
         recyclerProdutos = view.findViewById(R.id.recyclerProdutos);
         firebaseRef = FirebaseConfig.getFirebase();
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
 
 
         //Configurar o RecyclerView
@@ -111,7 +118,26 @@ public class EstoqueFragment extends Fragment {
                 });
 
 
+
+
         return view;
     }
+
+   /* private void recuperarImagem(){
+
+        FirebaseStorage.getInstance().getReference().child("produtos/" + produto.getNome + ".jpg");
+
+        storage = FirebaseStorage.getInstance().getReference();
+
+        StorageReference imagemRef = storage.child("produtos/");
+        StorageReference spaceRef = storage.child("images/space.jpg");
+        imagemRef = spaceRef.getParent();
+        StorageReference rootRef = spaceRef.getRoot();
+        StorageReference nullRef = spaceRef.getRoot().getParent();
+        spaceRef.getPath();
+        spaceRef.getName();
+        spaceRef.getBucket();
+
+    }*/
 
 }

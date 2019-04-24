@@ -147,26 +147,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
+                        android:layout_marginTop="22dp"
                         android:paddingRight="140dp"
                         android:text="N° CPF/CNPJ"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTotal" />
 
-                    <Button
-                        android:id="@+id/buttonTrocarCPF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        android:layout_marginBottom="21dp"
-                        android:onClick="abrirAlert"
-                        android:text="Trocar"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0" />
                 </android.support.constraint.ConstraintLayout>
 
                 <include layout="@layout/divisor" />

@@ -114,13 +114,15 @@ public class IntroCadastro extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful() == true && campoEmail.getText().toString().equals("adega.house@gmail.com")
+                        && campoSenha.getText().toString().equals("adega123")) {
+                    abrirPedidosEstoque();
+                }
+
+                else if (task.isSuccessful()) {
                     abrirPedidosCardapio();
 
-                } else if (campoEmail.getText().toString().equals("teste@teste.com")
-                        && campoSenha.getText().toString().equals("teste123")) {
-                    abrirPedidosEstoque();
-                } else {
+                }  else {
                     String excecao = "";
                     try {
                         throw task.getException();

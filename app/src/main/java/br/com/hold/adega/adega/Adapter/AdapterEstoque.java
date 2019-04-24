@@ -6,7 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,6 +40,12 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
         Produto produto = produtos.get(i);
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$ " + produto.getValor());
+        Picasso.get()
+                .load(produto.getImagemProduto())
+                .fit()
+                .centerCrop()
+                .into(holder.imagemProduto);
+        StorageReference child = FirebaseStorage.getInstance().getReference().child("produtos/" + produtos.get(i).getNome() + ".jpg");
 
 //        if(produto.isDisponivel() == true){
 //            holder.disponivel.setText("Disponivel");
@@ -54,6 +65,7 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
         TextView nome;
         TextView valor;
         TextView disponivel;
+        ImageView imagemProduto;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +73,8 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
             nome = itemView.findViewById(R.id.txtNomeProdutoPedido);
             valor = itemView.findViewById(R.id.txtValorProdutoPedido);
             disponivel = itemView.findViewById(R.id.txtDisponivelProdutoPedido);
+            imagemProduto = itemView.findViewById(R.id.imageProduto);
+
         }
     }
 

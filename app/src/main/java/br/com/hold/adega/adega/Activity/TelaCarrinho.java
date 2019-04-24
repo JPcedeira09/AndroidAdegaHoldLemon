@@ -40,7 +40,7 @@ public class TelaCarrinho extends AppCompatActivity {
     private RecyclerView recyclerView;
     private static List<ItensCarrinho> itensCarrinho = new ArrayList<>();
     private TextView enderecoEntrega,valorTotal,cpf;
-    private Button buttonCpf,buttonPedido;
+    private Button buttonPedido;
     private static Pedido pedido;
     private static Produto produto;
     private static ItensCarrinho carrinho;
@@ -75,7 +75,7 @@ public class TelaCarrinho extends AppCompatActivity {
         valorTotal = findViewById(R.id.textValorTotal);
         cpf = findViewById(R.id.textCPFCarrinho);
         buttonPedido = findViewById(R.id.buttonFazerPedido);
-        buttonCpf = findViewById(R.id.buttonTrocarCPF);
+
 
 
         //Configurando o Recycler
@@ -171,7 +171,7 @@ public class TelaCarrinho extends AppCompatActivity {
 
     }
 
-    //Fazendo o AlertDialog
+    /*Fazendo o AlertDialog
     public void abrirAlert(View view){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -184,7 +184,7 @@ public class TelaCarrinho extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     private void voltarMenuCliente(){
         startActivity(new Intent(TelaCarrinho.this, MenuCliente.class));
