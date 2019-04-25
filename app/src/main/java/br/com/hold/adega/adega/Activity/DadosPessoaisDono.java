@@ -51,7 +51,7 @@ public class DadosPessoaisDono extends AppCompatActivity {
                 if (dataSnapshot.getValue() != null){
                     UsuarioAdega usuario = dataSnapshot.getValue(UsuarioAdega.class);
                     editTxtNome.setText(usuario.getNome());
-                    editTxtRazao.setText(usuario.getNome());
+                    editTxtRazao.setText(usuario.getRazao());
                     editTxtEndereco.setText(usuario.getEndereco());
                     editTxtContato.setText(usuario.getTelefone1());
                     editTxtCNPJ.setText(usuario.getCNPJ());
@@ -90,7 +90,7 @@ public class DadosPessoaisDono extends AppCompatActivity {
 
                                     UsuarioAdega usuario = new UsuarioAdega();
                                     usuario.setNome(nome);
-                                    usuario.setNome(razao);
+                                    usuario.setRazao(razao);
                                     usuario.setCNPJ(cnpj);
                                     usuario.setCEP(cep);
                                     usuario.setEndereco(endereço);
@@ -141,7 +141,7 @@ public class DadosPessoaisDono extends AppCompatActivity {
                 usuarioMap.put("numero", usuario.getNumero());
                 usuarioMap.put("CNPJ", usuario.getCNPJ() );
                 usuarioMap.put("CEP",usuario.getCEP());
-                usuarioMap.put("Razao",usuario.getNome());
+                usuarioMap.put("Razao",usuario.getRazao());
                 usuarioMap.put("Telefone",usuario.getTelefone1());
 
                 FirebaseConfig.getFirebase()

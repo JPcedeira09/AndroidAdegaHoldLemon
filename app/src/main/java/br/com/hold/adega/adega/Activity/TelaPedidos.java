@@ -57,7 +57,7 @@ public class TelaPedidos extends AppCompatActivity {
         recyclerPedidos.setAdapter(adapterTelaPedido);
 
         //Recupera dados do Firebase
-//        FirebaseChildsUtils.getOPedido(pedido.getKey()).addValueEventListener(new ValueEventListener() {
+//        FirebaseChildsUtils.getOPedidoItens(pedido.getKey()).addValueEventListener(new ValueEventListener() {
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                        itensCarrinho.clear();
@@ -78,39 +78,7 @@ public class TelaPedidos extends AppCompatActivity {
 //                });
 
 
-//        FirebaseChildsUtils.getUsuario(FirebaseConfig.getFirebaseAutentificacao().getUid())
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                        Usuario usuario = dataSnapshot.getValue(Usuario.class);
-//                        editNome.setText(usuario.getNome());
-//                        editCpf.setText(usuario.getCpf());
-//                        editEndereco.setText(usuario.getEndereco() + usuario.getNumero() + usuario.getComplemento());
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-//
-//
-//        FirebaseChildsUtils.getValoresPedido(FirebaseConfig.getFirebaseAutentificacao().getUid())
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                        ValoresPedido valoresPedido = dataSnapshot.getValue(ValoresPedido.class);
-//                        editTotal.setText(String.valueOf(valoresPedido.getValorTotalProduto()));
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
+
 
 
     }

@@ -26,9 +26,9 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
     private List<ItensCarrinho> itensCarrinhos;
     private Context context;
 
-    public AdapterCarrinho(List<ItensCarrinho> pp, Context cc) {
+    public AdapterCarrinho(List<ItensCarrinho> pp, Context context) {
         this.itensCarrinhos = pp;
-        this.context = cc;
+        this.context = context;
     }
 
     @NonNull
@@ -49,21 +49,12 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
         holder.icone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 
-                dialog.setTitle("OLHA ESSA PORRA");
-                dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                dialog.create();
-                dialog.show();
 
             }
         });
+
+
 
     }
 
@@ -73,6 +64,7 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
 
         return itensCarrinhos.size();
     }
+
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -91,14 +83,6 @@ public class AdapterCarrinho extends RecyclerView.Adapter<AdapterCarrinho.MyView
 
 
     }
-    public void remover(){
-        DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
-        ItensCarrinho carrinho = new ItensCarrinho();
-        DatabaseReference  produtoRef =firebaseRef.child("Usuario")
-                .child(FirebaseConfig.getFirebaseAutentificacao().getUid())
-                .child("MeusPedidos")
-                .child(carrinho.getKey());
-        produtoRef.removeValue();
 
-    }
+
 }

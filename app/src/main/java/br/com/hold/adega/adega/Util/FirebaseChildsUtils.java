@@ -48,12 +48,31 @@ public class FirebaseChildsUtils {
         return  referenciaFirebase;
     }
 
-    public static DatabaseReference getOPedido(String key) {
+    public static DatabaseReference getOPedidoItens(String key) {
 
         referenciaFirebase = null;
 
         if (referenciaFirebase == null) {
-            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").child(key);
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").child(key).child("Itens");
+        }
+        return  referenciaFirebase;
+    }
+
+    public static DatabaseReference getOPedidoDados(String key) {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").child(key).child("DadosCliente");
+        }
+        return  referenciaFirebase;
+    }
+    public static DatabaseReference getOPedidoValores(String key) {
+
+        referenciaFirebase = null;
+
+        if (referenciaFirebase == null) {
+            return FirebaseConfig.getFirebase().child("Adega").child("Pedidos").child(key).child("ValoresPedido");
         }
         return  referenciaFirebase;
     }
@@ -125,5 +144,7 @@ public class FirebaseChildsUtils {
         return referenciaFirebase;
 
     }
+
+
 
 }

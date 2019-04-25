@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +28,10 @@ import br.com.hold.adega.adega.Adapter.AdapterCarrinho;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Listener.RecyclerItemClickListener;
 import br.com.hold.adega.adega.Model.ItensCarrinho;
-import br.com.hold.adega.adega.Model.Pedido;
-import br.com.hold.adega.adega.Model.Produto;
 import br.com.hold.adega.adega.Model.Usuario;
 import br.com.hold.adega.adega.Model.ValoresPedido;
 import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
-import br.com.hold.adega.adega.Util.FirebasePedidoUtils;
-import br.com.hold.adega.adega.Util.FirebaseUsuarioUtils;
+
 
 public class TelaCarrinho extends AppCompatActivity {
 
@@ -40,9 +39,9 @@ public class TelaCarrinho extends AppCompatActivity {
     private static List<ItensCarrinho> itensCarrinho = new ArrayList<>();
     private TextView enderecoEntrega,valorTotal,cpf;
     private Button buttonCpf,buttonPedido;
-    private static Pedido pedido;
-    private static Produto produto;
+    private static ValoresPedido valPedidos;
     private static ItensCarrinho carrinho;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +66,28 @@ public class TelaCarrinho extends AppCompatActivity {
         final AdapterCarrinho adapterCarrinho = new AdapterCarrinho(itensCarrinho, this);
         recyclerView.setAdapter(adapterCarrinho);
 
-
         // Evento de click no Recycler
         recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(this, recyclerView,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) {
+                    public void onItemClick(View view, final int position) {
+
+
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(TelaCarrinho.this);
+
+                        dialog.setTitle("OLHA ESSA PORRA");
+                        dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                remover(itensCarrinho.get(position).getKey());
+
+
+
+                            }
+                        });
+
+                        dialog.create();
+                        dialog.show();
 
 
                     }
@@ -109,6 +124,7 @@ public class TelaCarrinho extends AppCompatActivity {
                 });
 
 
+
         FirebaseChildsUtils.getUsuario(FirebaseConfig.getFirebaseAutentificacao().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -132,7 +148,12 @@ public class TelaCarrinho extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         ValoresPedido valoresPedido = dataSnapshot.getValue(ValoresPedido.class);
-                        valorTotal.setText(String.valueOf(valoresPedido.getValorTotalProduto()));
+                        DecimalFormat df2 = new DecimalFormat("#.##");
+                        df2.setRoundingMode(RoundingMode.DOWN);
+                        df2.format(valoresPedido.getValorTotalProduto());
+                        df2.setRoundingMode(RoundingMode.UP);
+                        df2.format(valoresPedido.getValorTotalProduto());
+                        valorTotal.setText(String.valueOf(df2.format(valoresPedido.getValorTotalProduto())));
 
                     }
 
@@ -166,6 +187,16 @@ public class TelaCarrinho extends AppCompatActivity {
 
 
     }
+    public void remover(String key){
+        DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
+        DatabaseReference  produtoRef =firebaseRef.child("Usuarios")
+                .child(FirebaseConfig.getFirebaseAutentificacao().getUid())
+                .child("MeusPedidos")
+                .child(key);
+        produtoRef.removeValue();
+        updateValor();
+    }
+
 
     //Fazendo o AlertDialog
     public void abrirAlert(){
@@ -183,6 +214,8 @@ public class TelaCarrinho extends AppCompatActivity {
             }
         });
     }
+
+
 
     private static void insertCarrinho(){
         final DatabaseReference childPedido = FirebaseChildsUtils.getPedido();
@@ -225,11 +258,14 @@ public class TelaCarrinho extends AppCompatActivity {
                });
     }
 
-
     public static void setItem(DatabaseReference referenceKey, List<ItensCarrinho> carrinho){
 
         for(ItensCarrinho item : carrinho){
+
             referenceKey.child(item.getKey()).setValue(item);
+
+
+
         }
     }
 
@@ -240,6 +276,9 @@ public class TelaCarrinho extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ValoresPedido valoresPedido = dataSnapshot.getValue(ValoresPedido.class);
                 refInsert.setValue(valoresPedido);
+
+
+
             }
 
             @Override
@@ -249,7 +288,19 @@ public class TelaCarrinho extends AppCompatActivity {
         });
     }
 
+    public static void updateValor(){
 
+
+        Integer qtde = 0;
+        Double totalTudo = 0.0;
+        totalTudo -=(carrinho.getTotalItem() * carrinho.getQtd());
+        qtde -= carrinho.getQtd();
+        valPedidos.setValorTotalProduto(totalTudo);
+
+
+
+
+    }
 
 
 }

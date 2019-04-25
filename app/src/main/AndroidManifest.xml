@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/house_beer"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adega.Activity.TelaPedidos"></activity>
+        <activity android:name=".adega.Activity.TelaPedidos" />
         <activity android:name=".adega.Activity.EstoqueTelaProduto" />
         <activity android:name=".adega.Activity.TelaAdicionarProduto" />
         <activity android:name=".adega.Activity.DadosPessoaisDono" />

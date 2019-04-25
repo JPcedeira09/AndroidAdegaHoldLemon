@@ -17,6 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Model.ItensCarrinho;
@@ -57,7 +60,8 @@ public class TelaProduto extends AppCompatActivity {
 
         descricao.setText(produto.getDescricao());
         numero.setText(""+1);
-        total.setText("Total R$ "+produto.getValor());
+
+        total.setText("Total R$ " + produto.getValor());
         nomeProduto.setText(produto.getNome());
 
         //Fazer evento de Click na Imagem
@@ -112,16 +116,27 @@ public class TelaProduto extends AppCompatActivity {
 
     public void atualizaValorTotal(){
         Double qtd = Double.valueOf(quantidadePedido);
-        total.setText("Total R$ "+  produto.getValor() * qtd );
+        DecimalFormat df2 = new DecimalFormat("#.##");
+        df2.setRoundingMode(RoundingMode.DOWN);
+        df2.format(produto.getValor());
+        df2.setRoundingMode(RoundingMode.UP);
+        df2.format(produto.getValor());
+        total.setText("Total R$ "+ df2.format(produto.getValor() * qtd)  );
     }
 
     public static void setItemPedido(String uid , DatabaseReference referenceKey){
 
         String key = referenceKey.getKey();
         Integer qtd = quantidadePedido.intValue();
-        Double valorTotal = produto.getValor() * qtd;
+        DecimalFormat df2 = new DecimalFormat("#.##");
+        df2.setRoundingMode(RoundingMode.DOWN);
+        df2.format(produto.getValor());
+        df2.setRoundingMode(RoundingMode.UP);
+        df2.format(produto.getValor());
+        Double valorTotal = Double.valueOf(df2.format(produto.getValor() * qtd));
 
         ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
+
 
         referenceKey.setValue(item);
         getValorAtualDoPedido(uid,valorTotal);

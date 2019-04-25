@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
 import br.com.hold.adega.R;
+import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Model.Produto;
 
 public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHolder>  {
@@ -62,6 +65,18 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
             valor = itemView.findViewById(R.id.txtValorProdutoPedido);
             disponivel = itemView.findViewById(R.id.txtDisponivelProdutoPedido);
         }
+
+
+        public void remover(){
+            DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
+            Produto produto = new Produto();
+            DatabaseReference  produtoRef =firebaseRef.child("Adega")
+                    .child("Produtos")
+                    .child(produto.getNome());
+            produtoRef.removeValue();
+
+        }
+
     }
 
 

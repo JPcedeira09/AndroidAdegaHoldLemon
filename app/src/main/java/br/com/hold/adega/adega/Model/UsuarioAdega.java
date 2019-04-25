@@ -9,6 +9,7 @@ public class UsuarioAdega {
     private String horarioAberto;
     private String horarioFechado;
     private String nome;
+    private String razao;
     private String numero;
     private Integer raioDeEntrega;
     private String telefone1;
@@ -56,6 +57,12 @@ public class UsuarioAdega {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    public String getRazao() {
+        return razao;
+    }
+    public void setRazao(String razao) {
+        this.razao = razao;
+    }
     public String getNumero() {
         return numero;
     }
@@ -81,7 +88,7 @@ public class UsuarioAdega {
         this.telefonen2 = telefonen2;
     }
     public UsuarioAdega(String cEP, String cNPJ, Boolean aberto, String endereco, String horarioAberto,
-                        String horarioFechado, String nome, String numero, Integer raioDeEntrega, String telefone1,
+                        String horarioFechado, String nome,String razao, String numero, Integer raioDeEntrega, String telefone1,
                         String telefonen2) {
         super();
         CEP = cEP;
@@ -91,6 +98,7 @@ public class UsuarioAdega {
         this.horarioAberto = horarioAberto;
         this.horarioFechado = horarioFechado;
         this.nome = nome;
+        this.razao = razao;
         this.numero = numero;
         this.raioDeEntrega = raioDeEntrega;
         this.telefone1 = telefone1;
@@ -102,7 +110,7 @@ public class UsuarioAdega {
     @Override
     public String toString() {
         return "UsuarioAdega [CEP=" + CEP + ", CNPJ=" + CNPJ + ", aberto=" + aberto + ", endereco=" + endereco
-                + ", horarioAberto=" + horarioAberto + ", horarioFechado=" + horarioFechado + ", nome=" + nome
+                + ", horarioAberto=" + horarioAberto + ", horarioFechado=" + horarioFechado + ", nome=" + nome +",razao" + razao
                 + ", numero=" + numero + ", raioDeEntrega=" + raioDeEntrega + ", telefone1=" + telefone1
                 + ", telefonen2=" + telefonen2 + "]";
     }
