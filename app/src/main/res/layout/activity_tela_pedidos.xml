@@ -12,10 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
 
 
         <LinearLayout
@@ -23,42 +19,46 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtNumeroPedido"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="Número Pedido"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/colorAccent">
 
-            <TextView
-                android:id="@+id/txtNomeClientePedido"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="Nome Cliente"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/txtNomeClientePedido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Nome Cliente"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:text="Endereço de entrega"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/txtEnderecoEntregaPedido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Endereço"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/txtEnderecoEntregaPedido"
+            </LinearLayout>
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="15dp"
-                android:text="Endereço"
-                android:textSize="18sp" />
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
             <include layout="@layout/divisor" />
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerItemPedido"
@@ -162,7 +162,11 @@
                     android:layout_marginTop="20dp"
                     android:text="Confirmar Pedido"
                     android:textSize="18sp" />
+
+
             </LinearLayout>
+                </LinearLayout>
+</ScrollView>
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

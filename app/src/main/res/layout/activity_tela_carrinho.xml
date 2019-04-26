@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textEnderecoEntrega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="15dp"
+            android:text="Endereço"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textPrevisaoEntrega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="5dp"
+            android:text="Previsão para entrega"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:text="Endereço de entrega"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textEnderecoEntrega"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="15dp"
-                android:text="Endereço"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:text="Adega House Delivery"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textPrevisaoEntrega"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:text="Previsão para entrega"
-                android:textSize="16sp" />
 
             <include layout="@layout/divisor" />
 
@@ -85,70 +84,29 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textTaxaEntrega"
+                        android:layout_width="149dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginEnd="110dp"
-                        android:layout_marginRight="110dp"
-                        android:layout_marginBottom="12dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
                         android:text="Taxa de entrega"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textView15"
-                        app:layout_constraintEnd_toStartOf="@+id/textValorTaxa"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="70dp"
-                        android:layout_marginLeft="70dp"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginBottom="1dp"
-                        android:text="Total"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textValorTotal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-                    <TextView
-                        android:id="@+id/textValorTaxa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="17dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginEnd="47dp"
-                        android:layout_marginRight="47dp"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="Grátis"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView20"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textValorTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="162dp"
-                        android:layout_marginLeft="162dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="13dp"
-                        android:layout_marginEnd="90dp"
-                        android:layout_marginRight="90dp"
-                        android:layout_marginBottom="14dp"
-                        android:text="R$ 70,00"
+                        android:layout_marginBottom="1dp"
+                        android:text="Total"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView15"
-                        app:layout_constraintTop_toBottomOf="@+id/textValorTaxa" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textTaxaEntrega" />
                 </android.support.constraint.ConstraintLayout>
 
                 <include layout="@layout/divisor" />
@@ -158,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="16dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="15dp"
                     android:text="Pagamento"
@@ -175,16 +133,11 @@
                         android:id="@+id/textTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="159dp"
-                        android:layout_marginRight="159dp"
-                        android:layout_marginBottom="13dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
                         android:paddingTop="5dp"
                         android:text="CPF/CNPJ  na nota"
-                        app:layout_constraintBottom_toTopOf="@+id/textCPFCarrinho"
-                        app:layout_constraintEnd_toStartOf="@+id/buttonTrocarCPF"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -192,34 +145,19 @@
                         android:id="@+id/textCPFCarrinho"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="22dp"
                         android:paddingRight="140dp"
                         android:text="N° CPF/CNPJ"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/buttonTrocarCPF"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textTotal" />
 
-                    <Button
-                        android:id="@+id/buttonTrocarCPF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="22dp"
-                        android:layout_marginLeft="22dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginRight="40dp"
-                        android:layout_marginBottom="21dp"
-                        android:text="Trocar"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textCPFCarrinho"
-                        app:layout_constraintTop_toTopOf="parent" />
+
+
+
                 </android.support.constraint.ConstraintLayout>
 
                 <include layout="@layout/divisor" />
@@ -229,6 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
                     android:text="Fazer Pedido"
                     android:textSize="18sp" />
             </LinearLayout>

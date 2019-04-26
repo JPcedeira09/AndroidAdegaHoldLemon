@@ -34,6 +34,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 import br.com.hold.adega.adega.Model.Usuario;
+import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
 
 public class IntroCadastro extends AppCompatActivity {
 
@@ -56,7 +57,6 @@ public class IntroCadastro extends AppCompatActivity {
         campoSenha = findViewById(R.id.editSenha);
         botaoEntrar = findViewById(R.id.buttonEntrar);
         botaoCadastrar = findViewById(R.id.buttonCadastrar);
-
 
         botaoEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +96,16 @@ public class IntroCadastro extends AppCompatActivity {
 
     }
 
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        clienteLogado();
+
+    }*/
+
+
+
+
     public void validarLogin() {
         autentificacao = FirebaseConfig.getFirebaseAutentificacao();
         autentificacao.signInWithEmailAndPassword(
@@ -104,13 +114,15 @@ public class IntroCadastro extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful() == true && campoEmail.getText().toString().equals("adega.house@gmail.com")
+                        && campoSenha.getText().toString().equals("adega123")) {
+                    abrirPedidosEstoque();
+                }
+
+                else if (task.isSuccessful()) {
                     abrirPedidosCardapio();
 
-                } else if (campoEmail.getText().toString().equals("teste@teste.com")
-                        && campoSenha.getText().toString().equals("teste123")) {
-                    abrirPedidosEstoque();
-                } else {
+                }  else {
                     String excecao = "";
                     try {
                         throw task.getException();
@@ -131,6 +143,26 @@ public class IntroCadastro extends AppCompatActivity {
 
 
     }
+
+   /* public void clienteLogado(){
+        autentificacao = FirebaseConfig.getFirebaseAutentificacao();
+
+
+        if (autentificacao.getCurrentUser() !=null ){
+            abrirPedidosCardapio();
+
+        }
+    }
+
+    public void donoLogado(){
+        autentificacao = FirebaseConfig.getFirebaseAutentificacao();
+
+
+        if (autentificacao.getCurrentUser() !=null ){
+            abrirPedidosEstoque();
+
+        }
+    }*/
 
     public void abrirPedidosCardapio() {
 

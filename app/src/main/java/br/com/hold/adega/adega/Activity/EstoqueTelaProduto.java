@@ -1,31 +1,47 @@
 package br.com.hold.adega.adega.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
+import br.com.hold.adega.adega.Fragment.EstoqueFragment;
 import br.com.hold.adega.adega.Model.Produto;
 import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
 
 public class EstoqueTelaProduto extends AppCompatActivity {
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
     private EditText alteraNome, alteraDescricao, alteraQuantidade,alteraValor;
     private Button altera;
     private static Produto produto;
+
+    private ImageView imagemProdutoEstoque;
+
+    private Uri mImageUri;
+    private StorageReference mStorageRef;
+    private DatabaseReference mDatabaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +54,45 @@ public class EstoqueTelaProduto extends AppCompatActivity {
 
         System.out.println(produto.toString());
 
+
+        //Sumir a ActionBar
+        getSupportActionBar().hide();
+
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Atualizar Produto");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuDono();
+                }
+            });
+
+        }
+
         //Inicializar componentes
         alteraNome = findViewById(R.id.editTextAlteraNomeProduto);
         alteraDescricao = findViewById(R.id.editTextAlteraDescricao);
         alteraQuantidade = findViewById(R.id.quantidadeAlteraProdutoEstoqueAdd);
         alteraValor = findViewById(R.id.editTextAlteraValorProduto);
         altera = findViewById(R.id.buttonAlterarEstoque);
+        imagemProdutoEstoque = findViewById(R.id.imagemProdutoEstoqueAdd);
+
+        mStorageRef = FirebaseStorage.getInstance().getReference("produtos");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("produtos");
+
+
+
+        imagemProdutoEstoque.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirImagemSelecionada();
+            }
+        });
 
         //Recupera dados
         FirebaseChildsUtils.getProduto(produto.getNome()).addValueEventListener(new ValueEventListener() {
@@ -116,6 +165,10 @@ public class EstoqueTelaProduto extends AppCompatActivity {
         });
     }
 
+    private void abrirMenuDono(){
+        startActivity(new Intent(EstoqueTelaProduto.this, MenuDono.class));
+    }
+
     public static void update(Produto p) {
 
         Map<String,Object> produtoMap = new HashMap<String,Object>();
@@ -137,6 +190,25 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                 .child("Produtos")
                 .child(produto.getNome())
                 .updateChildren(produtoMap);
+    }
+
+    private void abrirImagemSelecionada(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null){
+            mImageUri = data.getData();
+
+            Picasso.get().load(mImageUri).into(imagemProdutoEstoque);
+        }
     }
 
 }

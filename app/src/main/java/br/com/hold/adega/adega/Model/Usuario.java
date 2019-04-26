@@ -13,12 +13,15 @@ public class Usuario implements Serializable {
     private String complemento;
     private String celular;
 
+
     public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
+
+
     public String getNome() {
         return nome;
     }
@@ -82,7 +85,7 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "Usuario [email=" + email + ", nome=" + nome + ", cpf=" + cpf + ", cep=" + cep + ", endereco=" + endereco
-                + ", numero=" + numero + ", complemento=" + complemento + ", celular=" + celular +"]";
+                + ", numero=" + numero + ", complemento=" + complemento + ", celular=" + celular + "]";
     }
 
 }

@@ -2,13 +2,23 @@ package br.com.hold.adega.adega.Util;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import br.com.hold.adega.adega.Config.FirebaseConfig;
 
+/**
+ * Casse que abstrai todos os childs do firebase adega.
+ */
 public class FirebaseChildsUtils {
 
     private static DatabaseReference referenciaFirebase = null;
 
+    /**
+     * Trás o child de pedidos de um UID x que é passado por parametro.
+     * path -> /Usuarios/uidx/MeusPedidos/
+     * @param uid
+     * @return DatabaseReference uma referencia do nosso banco de dados do firebase.
+     */
     public static DatabaseReference getItensCarrinho(String uid) {
 
         referenciaFirebase = null;
@@ -32,7 +42,6 @@ public class FirebaseChildsUtils {
 
     public static DatabaseReference getPedidos() {
         referenciaFirebase = null;
-
 
         if (referenciaFirebase == null) {
             return FirebaseConfig.getFirebase().child("Adega").child("Pedidos");
@@ -70,6 +79,7 @@ public class FirebaseChildsUtils {
         }
         return  referenciaFirebase;
     }
+
     public static DatabaseReference getOPedidoValores(String key) {
 
         referenciaFirebase = null;
@@ -79,6 +89,7 @@ public class FirebaseChildsUtils {
         }
         return  referenciaFirebase;
     }
+
     public static DatabaseReference getHistorico(String uid) {
 
         referenciaFirebase = null;

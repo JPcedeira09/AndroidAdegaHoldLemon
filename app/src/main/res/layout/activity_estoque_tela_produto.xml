@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <EditText
         android:id="@+id/editTextAlteraNomeProduto"
@@ -65,10 +81,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Adicionar ao estoque"
+            android:text="Alterar no estoque"
             android:textColor="@color/colorAccent" />
-
-
     </LinearLayout>
 
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

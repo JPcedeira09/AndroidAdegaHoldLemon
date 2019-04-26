@@ -152,6 +152,8 @@ public class MenuDono extends AppCompatActivity implements NavigationView.OnNavi
         } else if (id == R.id.nav_slideshow) {
             startActivity(new Intent(this, JhoonyGostoso.class));
 
+        } else if (id == R.id.nav_gallery) {
+
         } else if (id == R.id.nav_manage) {
             autenticacao.signOut();
             startActivity(new Intent(getApplicationContext(), IntroCadastro.class));

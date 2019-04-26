@@ -1,5 +1,6 @@
 package br.com.hold.adega.adega.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,24 @@ public class DadosPessoaisDono extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_pessoais_dono);
+
+        //Sumir a ActionBar
+        getSupportActionBar().hide();
+
+        //Configurar toolbar
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Dados da Empresa");
+        if (null != toolbar) {
+            toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    abrirMenuDono();
+                }
+            });
+
+        }
 
         //Inicializar Componentes
         editTxtNome = findViewById(R.id.editNomeLoja);
@@ -153,6 +172,10 @@ public class DadosPessoaisDono extends AppCompatActivity {
         });
 
 
+    }
+
+    private void abrirMenuDono(){
+        startActivity(new Intent(DadosPessoaisDono.this, MenuDono.class));
     }
 }
 

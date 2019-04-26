@@ -1,5 +1,7 @@
 package br.com.hold.adega.adega.Model;
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 
 public class Produto implements Serializable {
@@ -9,6 +11,16 @@ public class Produto implements Serializable {
     private Integer quantidade;
     private Double valor;
     private Boolean disponivel;
+    private String imagemProduto;
+
+
+    public String getImagemProduto() {
+        return imagemProduto;
+    }
+
+    public void setImagemProduto(String imagemProduto) {
+        this.imagemProduto = imagemProduto;
+    }
 
     public String getNome() {
         return nome;
