@@ -11,8 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9526143-ce75-4846-abbb-4d78f27e2711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Interfaces/EphemeralKeyProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pagamento.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -20,26 +18,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoaisDono.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoaisDono.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuDono.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuDono.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/PedidosEstoque.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/PedidosEstoque.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCarrinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCarrinho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterEstoque.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterEstoque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/EstoqueFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/EstoqueFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/UsuarioAdega.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/UsuarioAdega.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_jhoony_gostoso.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_jhoony_gostoso.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_estoque.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_estoque.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pedidos_realizadosragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pedidos_realizadosragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +66,7 @@
           <entry key="project.open.time.13" value="5" />
           <entry key="project.open.time.14" value="3" />
           <entry key="project.open.time.15" value="3" />
-          <entry key="project.open.time.16" value="2" />
+          <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="4" />
           <entry key="project.open.time.20" value="1" />
@@ -92,14 +76,14 @@
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="70" />
+          <entry key="project.opened" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="4" />
           <entry key="gradle" value="22" />
-          <entry key="java" value="342" />
+          <entry key="java" value="353" />
           <entry key="properties" value="8" />
           <entry key="xml" value="163" />
         </counts>
@@ -108,7 +92,7 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="Groovy" value="22" />
-          <entry key="JAVA" value="342" />
+          <entry key="JAVA" value="353" />
           <entry key="Properties" value="8" />
           <entry key="XML" value="163" />
         </counts>
@@ -117,7 +101,7 @@
         <counts>
           <entry key="dummy" value="2" />
           <entry key="gradle" value="97" />
-          <entry key="java" value="7531" />
+          <entry key="java" value="7647" />
           <entry key="txt" value="251" />
           <entry key="xml" value="421" />
         </counts>
@@ -125,7 +109,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="97" />
-          <entry key="JAVA" value="7531" />
+          <entry key="JAVA" value="7647" />
           <entry key="PLAIN_TEXT" value="253" />
           <entry key="XML" value="421" />
         </counts>
@@ -137,25 +121,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="294" column="31" lean-forward="true" selection-start-line="294" selection-start-column="31" selection-end-line="294" selection-end-column="31" />
+            <state relative-caret-position="56">
+              <caret line="149" column="37" lean-forward="true" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7542#7831#0" expanded="true" />
-                <element signature="e#7830#7831#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2000">
+              <caret line="126" column="67" selection-start-line="126" selection-start-column="67" selection-end-line="126" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1460">
+              <caret line="102" column="90" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoaisDono.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-18">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -186,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoais.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_adicionar_produto.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dados_pessoais_dono.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_produto.xml" />
@@ -222,7 +221,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Pagamento/PaymentSession.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tela_pedidos.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaPedidos.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/EstoqueFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/Usuario.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/UsuarioAdega.java" />
@@ -231,16 +229,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/ValoresPedido.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/ItensCarrinho.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuDono.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/PedidosEstoque.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/Pedido.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuDono.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/Cadastro2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="width" value="2380" />
     <option name="height" value="1300" />
@@ -253,6 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -284,31 +285,14 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="adega" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="adega" type="462c0819:PsiDirectoryNode" />
-              <item name="Config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AndroidAdegaHoldLemon" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="adega" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adega" type="462c0819:PsiDirectoryNode" />
-              <item name="Fragment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AndroidAdegaHoldLemon" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="adega" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adega" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Activity" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -418,7 +402,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.23825504" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.2946309" />
       <window_info id="Structure" order="1" sideWeight="0.5014663" side_tool="true" weight="0.23825504" />
       <window_info id="Captures" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -434,11 +418,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.90909094" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32991204" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5026846" side_tool="true" weight="0.58504397" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.5601173" />
-      <window_info anchor="bottom" id="Android Profiler" order="12" />
+      <window_info anchor="bottom" id="Build" order="11" weight="0.7258065" />
+      <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -488,13 +472,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/IntroCadastro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Config/FirebaseConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -510,12 +487,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_carrinho.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="51" column="67" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/Cadastro1.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -553,27 +530,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_menu_cliente_drawer.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_menu_dono_drawer.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuCliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="167" column="84" lean-forward="true" selection-start-line="167" selection-end-line="168" />
-        </state>
-      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fcm/ServicoDeNotificaticao.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -583,21 +553,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/adapter_estoque.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/Pagamento/CardInputWidget.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCarrinho.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/JhoonyGostoso.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -608,12 +571,12 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Interfaces/PagamentoInterface.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Interfaces/Pagamento.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_jhoony_gostoso.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-end-line="5" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Interfaces/EphemeralKeyProvider.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -623,19 +586,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pagamento.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Pagamento/Pagamento.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Pagamento/CustomerSession.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Pagamento/PaymentSession.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_pedidos.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -654,16 +617,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dados_pessoais_dono.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Model/Produto.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -672,20 +628,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoaisDono.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1855">
-          <caret line="135" selection-start-line="135" selection-end-line="135" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tela_carrinho.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="57" column="39" lean-forward="true" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="51" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoais.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -726,27 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterEstoque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1002">
-          <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCardapio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -796,32 +724,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCardapio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterEstoque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuCliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/MenuDono.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+        <state relative-caret-position="443">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/Cadastro2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="59" column="42" lean-forward="true" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Adapter/AdapterCarrinho.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaCarrinho.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="294" column="31" lean-forward="true" selection-start-line="294" selection-start-column="31" selection-end-line="294" selection-end-column="31" />
+        <state relative-caret-position="56">
+          <caret line="149" column="37" lean-forward="true" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7542#7831#0" expanded="true" />
-            <element signature="e#7830#7831#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/TelaProduto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2000">
+          <caret line="126" column="67" selection-start-line="126" selection-start-column="67" selection-end-line="126" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Fragment/PedidosRealizadosFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
+        <state relative-caret-position="1460">
+          <caret line="102" column="90" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Util/FirebaseChildsUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/hold/adega/adega/Activity/DadosPessoaisDono.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>

@@ -39,8 +39,11 @@ public class TelaCarrinho extends AppCompatActivity {
     private static List<ItensCarrinho> itensCarrinho = new ArrayList<>();
     private TextView enderecoEntrega,valorTotal,cpf;
     private Button buttonCpf,buttonPedido;
-    private static ValoresPedido valPedidos;
+    private static Double total;
+    private static Integer qtd;
     private static ItensCarrinho carrinho;
+
+
 
 
     @Override
@@ -58,6 +61,8 @@ public class TelaCarrinho extends AppCompatActivity {
         cpf = findViewById(R.id.textCPFCarrinho);
         buttonPedido = findViewById(R.id.buttonFazerPedido);
         buttonCpf = findViewById(R.id.buttonTrocarCPF);
+        total = 0.0;
+        qtd = 0;
 
 
         //Configurando o Recycler
@@ -290,12 +295,14 @@ public class TelaCarrinho extends AppCompatActivity {
 
     public static void updateValor(){
 
+        ItensCarrinho itensCarrinho = new ItensCarrinho();
+        ValoresPedido valoresPedido = new ValoresPedido();
 
-        Integer qtde = 0;
-        Double totalTudo = 0.0;
-        totalTudo -=(carrinho.getTotalItem() * carrinho.getQtd());
-        qtde -= carrinho.getQtd();
-        valPedidos.setValorTotalProduto(totalTudo);
+        Integer qtde = itensCarrinho.getQtd();
+        Double totalTudo = itensCarrinho.getTotalItem();
+        total -=(totalTudo * qtde);
+        qtd -= qtde;
+        valoresPedido.setValorTotalProduto(totalTudo);
 
 
 

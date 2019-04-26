@@ -99,9 +99,9 @@ public class PedidosRealizadosFragment extends Fragment {
                                 for(DataSnapshot dsItem : itensDS.getChildren()) {
                                     ItensCarrinho itensCarrinho = dsItem.getValue(ItensCarrinho.class);
                                     itensCarrinhos.add(itensCarrinho);
-                                }
-
                                     pedido.setItensCarrinho(itensCarrinhos);
+                                    pedido.setKey(ds.child("key").getValue().toString());}
+
 
 
                                     final DataSnapshot valoresPedidoDS = ds.child("ValoresPedido");
@@ -113,8 +113,8 @@ public class PedidosRealizadosFragment extends Fragment {
                                     pedido.setUsuario(usuario);
 
 
-                                    pedido.setKey(ds.child("key").getValue().toString());
                                     listaPedidos.add(pedido);
+
 
                                     System.out.println(pedido);
 
