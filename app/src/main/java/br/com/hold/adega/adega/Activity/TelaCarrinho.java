@@ -171,20 +171,7 @@ public class TelaCarrinho extends AppCompatActivity {
 
     }
 
-    /*Fazendo o AlertDialog
-    public void abrirAlert(View view){
 
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-
-        dialog.setTitle("Trocar CFP");
-        dialog.setMessage("teste");
-        dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-    }*/
 
     private void voltarMenuCliente(){
         startActivity(new Intent(TelaCarrinho.this, MenuCliente.class));

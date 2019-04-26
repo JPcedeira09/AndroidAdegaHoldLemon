@@ -36,7 +36,7 @@ import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PedidosRealizadosragment extends Fragment {
+public class PedidosRealizadosFragment extends Fragment {
 
     private DatabaseReference firebaseref;
     private RecyclerView recyclerPedidos;

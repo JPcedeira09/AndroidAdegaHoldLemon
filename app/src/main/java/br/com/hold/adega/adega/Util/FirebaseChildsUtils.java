@@ -41,6 +41,9 @@ public class FirebaseChildsUtils {
 
 
     public static DatabaseReference getPedidos() {
+
+        referenciaFirebase = null;
+
         if (referenciaFirebase == null) {
             return FirebaseConfig.getFirebase().child("Adega").child("Pedidos");
         }

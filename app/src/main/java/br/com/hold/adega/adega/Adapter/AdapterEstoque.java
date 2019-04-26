@@ -1,6 +1,8 @@
 package br.com.hold.adega.adega.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import br.com.hold.adega.R;
@@ -36,7 +43,7 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int i) {
         Produto produto = produtos.get(i);
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$ " + produto.getValor());
@@ -45,7 +52,23 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
                 .fit()
                 .centerCrop()
                 .into(holder.imagemProduto);
-        StorageReference child = FirebaseStorage.getInstance().getReference().child("produtos/" + produtos.get(i).getNome() + ".jpg");
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://adegaholdlemon.appspot.com").child("produtos/" +produtos.get(i).getNome() + "png");
+        try {
+            final File localFile = File.createTempFile("imagem", "png");
+            storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    holder.imagemProduto.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                }
+            });
+        }catch (IOException e ) {}
+
 
 //        if(produto.isDisponivel() == true){
 //            holder.disponivel.setText("Disponivel");
@@ -53,6 +76,8 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
 //            holder.disponivel.setText("Indisponivel");
 //        }
     }
+
+
 
     @Override
     public int getItemCount() {

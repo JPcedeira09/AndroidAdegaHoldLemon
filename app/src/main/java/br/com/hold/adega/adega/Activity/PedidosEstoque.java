@@ -1,22 +1,11 @@
 package br.com.hold.adega.adega.Activity;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import br.com.hold.adega.R;
-import br.com.hold.adega.adega.Config.FirebaseConfig;
-import br.com.hold.adega.adega.Fragment.EstoqueFragment;
-import br.com.hold.adega.adega.Fragment.PedidosRealizadosragment;
 
 public class PedidosEstoque extends AppCompatActivity {
 
@@ -49,7 +38,7 @@ public class PedidosEstoque extends AppCompatActivity {
 //        habilitarNavegaçao(bottomNavigationViewEx);
 //        FragmentManager fragmentManager = getSupportFragmentManager();
 //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.viewPage, new PedidosRealizadosragment()).commit();
+//        fragmentTransaction.replace(R.id.viewPage, new PedidosRealizadosFragment()).commit();
 //
 //
 //    }
@@ -69,7 +58,7 @@ public class PedidosEstoque extends AppCompatActivity {
 //
 //                switch (item.getItemId()) {
 //                    case R.id.ic_pedidos:
-//                        fragmentTransaction.replace(R.id.viewPage, new PedidosRealizadosragment()).commit();
+//                        fragmentTransaction.replace(R.id.viewPage, new PedidosRealizadosFragment()).commit();
 //                        return true;
 //                    case R.id.ic_estoque:
 //                        fragmentTransaction.replace(R.id.viewPage, new EstoqueFragment()).commit();
