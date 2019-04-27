@@ -82,8 +82,7 @@ public class HistoricoPedidosCliente extends AppCompatActivity {
                         ItensCarrinho itensCarrinho = dsItem.getValue(ItensCarrinho.class);
                         itensCarrinhos.add(itensCarrinho);
                         pedido.setItensCarrinho(itensCarrinhos);
-                        System.out.println(ds);
-                        System.out.println(itensCarrinho);
+
 
                     }
 

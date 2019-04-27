@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,7 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Adapter.AdapterCarrinho;
@@ -42,13 +45,9 @@ public class TelaCarrinho extends AppCompatActivity {
     private static List<ItensCarrinho> itensCarrinho = new ArrayList<>();
     private TextView enderecoEntrega,valorTotal,cpf;
     private Button buttonPedido;
-    private static Double total;
-    private static Integer qtd;
-    private static Pedido pedido;
+    private static Integer quantidadePedido;
     private static Produto produto;
-    private static ItensCarrinho carrinho;
-
-
+    private static Double produtoValor = 0.0;
 
 
     @Override
@@ -58,7 +57,6 @@ public class TelaCarrinho extends AppCompatActivity {
 
         //sumir a toolbar
         getSupportActionBar().hide();
-
 
         //Configurar toolbar
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -81,9 +79,7 @@ public class TelaCarrinho extends AppCompatActivity {
         valorTotal = findViewById(R.id.textValorTotal);
         cpf = findViewById(R.id.textCPFCarrinho);
         buttonPedido = findViewById(R.id.buttonFazerPedido);
-        total = 0.0;
-        qtd = 0;
-
+        quantidadePedido=1;
 
 
         //Configurando o Recycler
@@ -103,12 +99,18 @@ public class TelaCarrinho extends AppCompatActivity {
 
                         dialog.setTitle("OLHA ESSA PORRA");
                         dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
+
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("===========================================");
+                                System.out.println(valorTotal.toString());
+
                                 remover(itensCarrinho.get(position).getKey());
+                                getValorDoProduto(itensCarrinho.get(position).getNome());
 
+                                final double v = itensCarrinho.get(position).getTotalItem() / itensCarrinho.get(position).getQtd();
 
-
+                                getValorAtualDoPedido(FirebaseConfig.getFirebaseAutentificacao().getUid(),v);
                             }
                         });
 
@@ -179,10 +181,9 @@ public class TelaCarrinho extends AppCompatActivity {
                         df2.format(valoresPedido.getValorTotalProduto());
                         df2.setRoundingMode(RoundingMode.UP);
                         df2.format(valoresPedido.getValorTotalProduto());
-                        valorTotal.setText(String.valueOf(df2.format(valoresPedido.getValorTotalProduto())));
-                        valorTotal.setText(String.valueOf("R$"+ valoresPedido.getValorTotalProduto()));
-
-
+                        valorTotal.setText("R$" +(df2.format(valoresPedido.getValorTotalProduto())));
+                        System.out.println(valorTotal);
+                        System.out.print("============================================================");
                     }
 
                     @Override
@@ -203,30 +204,46 @@ public class TelaCarrinho extends AppCompatActivity {
             }
         });
 
-
-
-
     }
-    public void remover(String key){
+
+    public static void remover(String key){
+
         DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
-        DatabaseReference  produtoRef =firebaseRef.child("Usuarios")
+        DatabaseReference  produtoRef = firebaseRef.child("Usuarios")
                 .child(FirebaseConfig.getFirebaseAutentificacao().getUid())
                 .child("MeusPedidos")
                 .child(key);
+
         produtoRef.removeValue();
-        updateValor();
     }
 
+    public static void getValorDoProduto(String nome) {
 
+        DatabaseReference produtoRef = FirebaseChildsUtils.getProduto(nome);
+        produtoRef.addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Produto prod = dataSnapshot.getValue(Produto.class);
 
-                private void voltarMenuCliente () {
+                produtoValor = prod.getValor();
+                System.out.println(produtoValor.toString());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void voltarMenuCliente () {
                     startActivity(new Intent(TelaCarrinho.this, MenuCliente.class));
                 }
 
 
                 private static void insertCarrinho () {
-                    final DatabaseReference childPedido = FirebaseChildsUtils.getPedido();
+                    DatabaseReference childPedido = FirebaseChildsUtils.getPedido();
                     String keyPedido = childPedido.getKey();
                     String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
 
@@ -239,7 +256,7 @@ public class TelaCarrinho extends AppCompatActivity {
                 private static void insertHistorico () {
 
                     String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
-                    final DatabaseReference childPedido = FirebaseChildsUtils.getHistorico(uid);
+                    DatabaseReference childPedido = FirebaseChildsUtils.getHistorico(uid);
                     String keyPedido = childPedido.getKey();
 
                     setUsuario(uid, childPedido.child("DadosCliente"));
@@ -297,21 +314,48 @@ public class TelaCarrinho extends AppCompatActivity {
                     });
                 }
 
-                public static void updateValor () {
+    public static void getValorAtualDoPedido (String uid , final Double valorTotalDosItensAtuais){
 
-                    ItensCarrinho itensCarrinho = new ItensCarrinho();
-                    ValoresPedido valoresPedido = new ValoresPedido();
+        final DatabaseReference childValoresPedido = FirebaseChildsUtils.getValoresPedido(uid);
 
-                    Integer qtde = itensCarrinho.getQtd();
-                    Double totalTudo = itensCarrinho.getTotalItem();
-                    total -= (totalTudo * qtde);
-                    qtd -= qtde;
-                    valoresPedido.setValorTotalProduto(totalTudo);
+        childValoresPedido.addListenerForSingleValueEvent(new ValueEventListener() {
+            ValoresPedido valorAtaul = null;
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                valorAtaul = dataSnapshot.getValue(ValoresPedido.class);
+                Double valorTotalPedido = valorAtaul.getValorTotalProduto();
+                Double valorAtualizadoPedido = valorTotalPedido - valorTotalDosItensAtuais;
 
-                }
-
-
+                valorAtaul.setValorTotalProduto(valorAtualizadoPedido);
+                System.out.print(valorAtaul);
+                System.out.print(valorTotalDosItensAtuais);
+                System.out.print(valorTotalPedido);
+                update(valorAtaul);
             }
 
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+
+    }
+
+    public static void update(ValoresPedido valoresPedido) {
+
+        Map<String,Object> valoresMap = new HashMap<String,Object>();
+        valoresMap.put("valorTotalProduto", valoresPedido.getValorTotalProduto());
+        valoresMap.put("dataPedido", valoresPedido.getDataPedido());
+        valoresMap.put("pedidoAceite",valoresPedido.getPedidoAceite());
+        valoresMap.put("statusPedido",valoresPedido.getStatusPedido());
+
+        FirebaseConfig.getFirebase()
+                .child("Usuarios")
+                .child(FirebaseConfig.getFirebaseAutentificacao().getUid())
+                .child("ValoresPedido")
+                .updateChildren(valoresMap);
+    }
+            }

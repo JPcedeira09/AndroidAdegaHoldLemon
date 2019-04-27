@@ -123,7 +123,6 @@ public class TelaProduto extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-
                     String uid = FirebaseConfig.getFirebaseAutentificacao().getUid();
 
                     DatabaseReference itemRefKey = FirebaseChildsUtils.getItemCarrinho(uid);
@@ -159,9 +158,9 @@ public class TelaProduto extends AppCompatActivity {
             String key = referenceKey.getKey();
             Integer qtd = quantidadePedido.intValue();
             Double valorTotal = produto.getValor() * qtd;
-        ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
-        referenceKey.setValue(item);
-        getValorAtualDoPedido(uid,valorTotal);
+            ItensCarrinho item = new ItensCarrinho(key, qtd, produto.getNome(), valorTotal);
+            referenceKey.setValue(item);
+            getValorAtualDoPedido(uid,valorTotal);
 
     }
 

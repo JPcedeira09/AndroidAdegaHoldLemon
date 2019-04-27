@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editNome2"
+                android:id="@+id/editNome"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
@@ -63,7 +63,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editNome2" />
+                app:layout_constraintTop_toBottomOf="@+id/editNome" />
 
             <EditText
                 android:id="@+id/editCpf"

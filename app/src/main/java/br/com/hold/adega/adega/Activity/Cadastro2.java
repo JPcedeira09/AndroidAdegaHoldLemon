@@ -16,8 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import br.com.hold.adega.R;
@@ -41,11 +39,15 @@ public class Cadastro2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro2);
 
+        Intent intent = getIntent();
+        usuario = (Usuario)intent.getSerializableExtra("usuario");
+        System.out.println(usuario);
+
         //Summir a Toobar
         getSupportActionBar().hide();
 
         //Inicializar Componetes
-        nome = findViewById(R.id.editNome2);
+        nome = findViewById(R.id.editNome);
         email = findViewById(R.id.editEmail);
         senha = findViewById(R.id.editSenha);
         casdastrar = findViewById(R.id.Cadastrar);
@@ -56,7 +58,7 @@ public class Cadastro2 extends AppCompatActivity {
                 String textNome = nome.getText().toString();
                 String textEmail = email.getText().toString();
                 String textSenha = senha.getText().toString();
-                //Validar si os campos foram preenchidos
+
                 if (!textNome.isEmpty()) {
                     if (!textEmail.isEmpty()) {
                         if (!textSenha.isEmpty()) {

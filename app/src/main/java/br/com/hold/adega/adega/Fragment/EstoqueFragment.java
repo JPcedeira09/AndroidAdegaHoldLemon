@@ -88,7 +88,7 @@ public class EstoqueFragment extends Fragment {
                     public void onLongItemClick(View view, final int position) {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 
-                        dialog.setTitle("OLHA ESSA PORRA");
+                        dialog.setTitle("Deseja excluir o produto?");
                         dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -30,7 +30,7 @@ public class Cadastro1 extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //Inicializar componentes
-        nome = findViewById(R.id.editNome2);
+        nome = findViewById(R.id.editNome);
         cpf = findViewById(R.id.editCpf);
         cep = findViewById(R.id.editCep);
         endereco = findViewById(R.id.editEndereco);
@@ -57,7 +57,6 @@ public class Cadastro1 extends AppCompatActivity {
                         if (!textoEndereco.isEmpty()) {
                         if (!textoNumero.isEmpty()) {
                         if (!textoTelefone.isEmpty()) {
-                            usuario = new Usuario();
                             usuario.setNome(textoNome);
                             usuario.setCpf(textoCpf);
                             usuario.setCep(textoCep);

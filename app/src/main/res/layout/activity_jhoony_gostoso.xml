@@ -15,12 +15,7 @@
         stripe:cardTint="@android:color/holo_purple" />
 
 
-    <com.stripe.android.view.CardInputWidget
-        android:id="@+id/card_input_widget2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        stripe:cardTextErrorColor="@android:color/holo_orange_dark"
-        stripe:cardTint="@android:color/holo_purple" />
+
 
 
 </LinearLayout>

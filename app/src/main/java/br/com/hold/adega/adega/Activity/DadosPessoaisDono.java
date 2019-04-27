@@ -160,7 +160,7 @@ public class DadosPessoaisDono extends AppCompatActivity {
                 usuarioMap.put("numero", usuario.getNumero());
                 usuarioMap.put("CNPJ", usuario.getCNPJ() );
                 usuarioMap.put("CEP",usuario.getCEP());
-                usuarioMap.put("Razao",usuario.getRazao());
+                usuarioMap.put("razao",usuario.getRazao());
                 usuarioMap.put("Telefone",usuario.getTelefone1());
 
                 FirebaseConfig.getFirebase()
