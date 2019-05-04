@@ -14,6 +14,8 @@ public class Produto implements Serializable {
     private String imagemProduto;
 
 
+
+
     public String getImagemProduto() {
         return imagemProduto;
     }
@@ -62,13 +64,14 @@ public class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    public Produto(String nome, String descricao, Integer quantidade, Double valor, Boolean disponivel) {
+    public Produto(String nome, String descricao, Integer quantidade, Double valor, Boolean disponivel,String imagemProduto ) {
         super();
         this.nome = nome;
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.valor = valor;
         this.disponivel = disponivel;
+        this.imagemProduto = imagemProduto;
     }
 
     public Produto() {
@@ -77,10 +80,14 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "Produto [nome=" + nome + ", descricao=" + descricao + ", quantidade=" + quantidade + ", valor="
-                + valor + ", disponivel=" + disponivel + "]";
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", quantidade=" + quantidade +
+                ", valor=" + valor +
+                ", disponivel=" + disponivel +
+                ", imagemProduto='" + imagemProduto + '\'' +
+                '}';
     }
-
-
 }
 

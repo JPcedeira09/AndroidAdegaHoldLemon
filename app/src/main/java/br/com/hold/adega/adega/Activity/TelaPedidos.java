@@ -73,6 +73,16 @@ public class TelaPedidos extends AppCompatActivity {
         recyclerPedidos = findViewById(R.id.recyclerItemPedido);
         confitmaPedido = findViewById(R.id.buttonConfirmarPedidoLoja);
 
+        confitmaPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PopActivity.class);
+//                intent.putExtra("selecionado", p);
+                startActivity(intent);
+            }
+        });
+
+
         //Configura o RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerPedidos.setLayoutManager(layoutManager);

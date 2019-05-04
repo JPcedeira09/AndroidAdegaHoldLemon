@@ -82,6 +82,7 @@ public class TelaCarrinho extends AppCompatActivity {
         quantidadePedido=1;
 
 
+
         //Configurando o Recycler
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);

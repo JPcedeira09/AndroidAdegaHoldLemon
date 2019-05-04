@@ -118,6 +118,7 @@ public class EstoqueFragment extends Fragment {
                         produtos.clear();
                         for (DataSnapshot ds : dataSnapshot.getChildren()){
                             produtos.add(ds.getValue(Produto.class));
+                            System.out.println(produtos);
 
 
                         }
@@ -145,21 +146,6 @@ public class EstoqueFragment extends Fragment {
         produtoRef.removeValue();
     }
 
-   /* private void recuperarImagem(){
 
-        FirebaseStorage.getInstance().getReference().child("produtos/" + produto.getNome + ".jpg");
-
-        storage = FirebaseStorage.getInstance().getReference();
-
-        StorageReference imagemRef = storage.child("produtos/");
-        StorageReference spaceRef = storage.child("images/space.jpg");
-        imagemRef = spaceRef.getParent();
-        StorageReference rootRef = spaceRef.getRoot();
-        StorageReference nullRef = spaceRef.getRoot().getParent();
-        spaceRef.getPath();
-        spaceRef.getName();
-        spaceRef.getBucket();
-
-    }*/
 
 }

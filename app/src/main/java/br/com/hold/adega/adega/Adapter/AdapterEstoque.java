@@ -50,28 +50,9 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
         Produto produto = produtos.get(i);
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$ " + produto.getValor());
-        Picasso.get()
-                .load(produto.getImagemProduto())
-                .fit()
-                .centerCrop()
-                .into(holder.imagemProduto);
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://adegaholdlemon.appspot.com").child("produtos/" +produtos.get(i).getNome() + "png");
-        try {
-            final File localFile = File.createTempFile("imagem", "png");
-            storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    holder.imagemProduto.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                }
-            });
-        }catch (IOException e ) {}
 
+        String uriImagem = produto.getImagemProduto();
+        Picasso.get().load(uriImagem).into(holder.imagemProduto);
 
 //        if(produto.isDisponivel() == true){
 //            holder.disponivel.setText("Disponivel");

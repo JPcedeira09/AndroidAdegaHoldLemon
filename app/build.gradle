@@ -47,7 +47,6 @@ dependencies {
     //Stripe
     implementation 'com.stripe:stripe-android:8.6.0'
 
-
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 

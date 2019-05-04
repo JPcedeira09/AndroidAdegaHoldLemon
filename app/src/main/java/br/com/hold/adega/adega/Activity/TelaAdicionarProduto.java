@@ -2,31 +2,34 @@ package br.com.hold.adega.adega.Activity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+
+
+
+import java.io.ByteArrayOutputStream;
 
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Config.FirebaseConfig;
-import br.com.hold.adega.adega.Fragment.EstoqueFragment;
 import br.com.hold.adega.adega.Model.Produto;
 
 public class TelaAdicionarProduto extends AppCompatActivity {
@@ -37,11 +40,10 @@ public class TelaAdicionarProduto extends AppCompatActivity {
     private ImageView imagemProdutoAdd;
     private Button adiciona;
 
+    private static final int SELECAO_GALERIA = 200;
+    private String urlImagem = "";
 
-    private Uri mImageUri;
     private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
-    private StorageTask mUploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +74,20 @@ public class TelaAdicionarProduto extends AppCompatActivity {
         editDescricao = findViewById(R.id.quantidadeProdutoEstoqueAdd);
         editValor = findViewById(R.id.editTextValorProduto);
         adiciona = findViewById(R.id.buttonAddEstoque);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("produtos");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("produtos");
+
 
         imagemProdutoAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirImagemSelecionada();
+//                abrirImagemSelecionada();
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                if (intent.resolveActivity(getPackageManager()) != null){
+                    startActivityForResult(intent,SELECAO_GALERIA);
+
+                }
             }
         });
 
@@ -88,7 +96,7 @@ public class TelaAdicionarProduto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String nome = editNomeProduto.getText().toString();
+                final String nome = editNomeProduto.getText().toString();
                 String descricao = editDescricao.getText().toString();
                 String qtd = editQuantidade.getText().toString();
                 String valor = editValor.getText().toString();
@@ -98,7 +106,8 @@ public class TelaAdicionarProduto extends AppCompatActivity {
                     if (!descricao.isEmpty()) {
                         if (!qtd.isEmpty()) {
                             if (!valor.isEmpty()) {
-                                if (mImageUri != null) {
+
+
 
 
                                     Produto produto = new Produto();
@@ -106,30 +115,14 @@ public class TelaAdicionarProduto extends AppCompatActivity {
                                     produto.setDescricao(descricao);
                                     produto.setQuantidade(Integer.getInteger(qtd));
                                     produto.setValor(Double.parseDouble(valor));
-                                    StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "."
-                                    + getFileExtension(mImageUri));
+                                    produto.setImagemProduto(urlImagem);
 
-                                    mUploadTask = fileReference.putFile(mImageUri)
-                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(TelaAdicionarProduto.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
                                     create(produto);
                                     finish();
 
                                     Toast.makeText(TelaAdicionarProduto.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
 
-                                }else{
-                                    Toast.makeText(TelaAdicionarProduto.this, "Insira a imagem", Toast.LENGTH_SHORT).show();
-                                }
+
 
                             } else {
                                 Toast.makeText(TelaAdicionarProduto.this, "Digite o valor do produto", Toast.LENGTH_SHORT).show();
@@ -155,11 +148,9 @@ public class TelaAdicionarProduto extends AppCompatActivity {
 
     }
 
-    /*public void loadWithGlide(){
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-    }*/
+
 
     public static void create(Produto produto) {
         FirebaseConfig.getFirebase()
@@ -173,28 +164,69 @@ public class TelaAdicionarProduto extends AppCompatActivity {
         startActivity(new Intent(TelaAdicionarProduto.this, MenuDono.class));
     }
 
-    private void abrirImagemSelecionada() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Produto produto = new Produto();
+        if (resultCode == RESULT_OK){
+            Bitmap imagem = null;
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null) {
-            mImageUri = data.getData();
+            try {
+                switch (requestCode){
+                    case SELECAO_GALERIA:
+                        Uri localImagem = data.getData();
+                        imagem = MediaStore.Images.Media.getBitmap(getContentResolver(),localImagem);
 
-            Picasso.get().load(mImageUri).into(imagemProdutoAdd);
+                        break;
+                }
+                if (imagem != null){
+                    imagemProdutoAdd.setImageBitmap(imagem);
+                    ByteArrayOutputStream baos =new ByteArrayOutputStream();
+                    imagem.compress(Bitmap.CompressFormat.JPEG,70,baos);
+                    byte[] dadosimagem = baos.toByteArray();
+
+
+                    final StorageReference imagemRef = mStorageRef
+                            .child("produtos")
+                            .child(editNomeProduto.getText() + ".jpeg");
+                    UploadTask uploadTask = imagemRef.putBytes(dadosimagem);
+
+
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        @Override
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if (!task.isSuccessful()) {
+                                throw task.getException();
+                            }
+
+                            return imagemRef.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                Uri downloadUri = task.getResult();
+                                urlImagem = downloadUri.toString();
+
+                            } else {
+                            }
+                        }
+                    });
+
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
+
+
     }
 
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
+
+
+
 }
