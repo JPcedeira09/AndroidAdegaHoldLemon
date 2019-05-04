@@ -20,47 +20,55 @@
             android:orientation="vertical"
             android:padding="0dp">
 
-            <RadioButton
-                android:id="@+id/radioButtonConfirmado"
+            <RadioGroup
+                android:id="@+id/RadioGroupStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="Confirmado"
-                android:textColor="@android:color/black" />
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/radioButtonConfirmado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Confirmado"
+                    android:textColor="@android:color/black" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/radioButtonRecusado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Recusado" />
 
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/radioButtonPreparo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Em preparo" />
 
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/radioButtonSaindoEntrega"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Saindo para entrega" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonEntregue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Entregue" />
+            </RadioGroup>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonAlterarStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Alterar Status"
+                android:background="#FF0000"/>
         </LinearLayout>
     </ScrollView>
 

@@ -115,7 +115,7 @@ public class TelaAdicionarProduto extends AppCompatActivity {
                                     produto.setDescricao(descricao);
                                     produto.setQuantidade(Integer.getInteger(qtd));
                                     produto.setValor(Double.parseDouble(valor));
-                                    produto.setImagemProduto(urlImagem);
+                                    produto.setUrl(urlImagem);
 
                                     create(produto);
                                     finish();

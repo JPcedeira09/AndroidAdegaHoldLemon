@@ -51,7 +51,7 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.MyViewHo
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$ " + produto.getValor());
 
-        String uriImagem = produto.getImagemProduto();
+        String uriImagem = produto.getUrl();
         Picasso.get().load(uriImagem).into(holder.imagemProduto);
 
 //        if(produto.isDisponivel() == true){

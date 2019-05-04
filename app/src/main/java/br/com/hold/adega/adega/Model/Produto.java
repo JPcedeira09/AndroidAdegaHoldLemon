@@ -11,17 +11,17 @@ public class Produto implements Serializable {
     private Integer quantidade;
     private Double valor;
     private Boolean disponivel;
-    private String imagemProduto;
+    private String url;
 
 
 
 
-    public String getImagemProduto() {
-        return imagemProduto;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImagemProduto(String imagemProduto) {
-        this.imagemProduto = imagemProduto;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getNome() {
@@ -64,14 +64,14 @@ public class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    public Produto(String nome, String descricao, Integer quantidade, Double valor, Boolean disponivel,String imagemProduto ) {
+    public Produto(String nome, String descricao, Integer quantidade, Double valor, Boolean disponivel,String url ) {
         super();
         this.nome = nome;
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.valor = valor;
         this.disponivel = disponivel;
-        this.imagemProduto = imagemProduto;
+        this.url = url;
     }
 
     public Produto() {
@@ -86,7 +86,7 @@ public class Produto implements Serializable {
                 ", quantidade=" + quantidade +
                 ", valor=" + valor +
                 ", disponivel=" + disponivel +
-                ", imagemProduto='" + imagemProduto + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

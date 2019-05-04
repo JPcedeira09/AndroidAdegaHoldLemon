@@ -41,7 +41,7 @@ public class AdapterCardapio  extends RecyclerView.Adapter<AdapterCardapio.MyVie
         Produto produto = produtos.get(position);
         holder.nome.setText(produto.getNome());
         holder.valor.setText("R$"+ String.valueOf(produto.getValor()));
-        String uriImagem = produto.getImagemProduto();
+        String uriImagem = produto.getUrl();
         Picasso.get().load(uriImagem).into(holder.foto);
 
 
