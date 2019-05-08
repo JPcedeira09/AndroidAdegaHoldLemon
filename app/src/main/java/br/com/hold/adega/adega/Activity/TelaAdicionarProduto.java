@@ -39,6 +39,7 @@ public class TelaAdicionarProduto extends AppCompatActivity {
     private EditText editNomeProduto, editQuantidade, editDescricao, editValor;
     private ImageView imagemProdutoAdd;
     private Button adiciona;
+    private Produto produto = new Produto();
 
     private static final int SELECAO_GALERIA = 200;
     private String urlImagem = "";
@@ -70,8 +71,8 @@ public class TelaAdicionarProduto extends AppCompatActivity {
 
         imagemProdutoAdd = findViewById(R.id.imagemProdutoEstoqueAdd);
         editNomeProduto = findViewById(R.id.editTextNomeProduto);
-        editQuantidade = findViewById(R.id.editTextDescricao);
-        editDescricao = findViewById(R.id.quantidadeProdutoEstoqueAdd);
+        editQuantidade = findViewById(R.id.quantidadeProdutoEstoqueAdd);
+        editDescricao = findViewById(R.id.editTextDescricao);
         editValor = findViewById(R.id.editTextValorProduto);
         adiciona = findViewById(R.id.buttonAddEstoque);
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -108,14 +109,11 @@ public class TelaAdicionarProduto extends AppCompatActivity {
                             if (!valor.isEmpty()) {
 
 
-
-
-                                    Produto produto = new Produto();
-                                    produto.setNome(nome);
-                                    produto.setDescricao(descricao);
-                                    produto.setQuantidade(Integer.getInteger(qtd));
-                                    produto.setValor(Double.parseDouble(valor));
-                                    produto.setUrl(urlImagem);
+                                produto.setNome(nome);
+                                produto.setDescricao(descricao);
+                                produto.setQuantidade(Integer.parseInt(qtd));
+                                produto.setValor(Double.parseDouble(valor));
+                                produto.setUrl(urlImagem);
 
                                     create(produto);
                                     finish();

@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -33,7 +34,7 @@ import br.com.hold.adega.adega.Util.FirebaseChildsUtils;
 public class TelaProduto extends AppCompatActivity {
 
     private TextView descricao, numero, total, nomeProduto;
-    private ImageView mais, menos;
+    private ImageView mais, menos,imagem;
     private Button adicionarCarrinho;
     private static Produto produto;
     private static Integer quantidadePedido;
@@ -56,6 +57,7 @@ public class TelaProduto extends AppCompatActivity {
         total = findViewById(R.id.textTotal);
         mais = findViewById(R.id.imageMais);
         menos = findViewById(R.id.imageMenos);
+        imagem =  findViewById(R.id.imageView4);
         adicionarCarrinho = findViewById(R.id.buttonAdicionarCarrinho);
         quantidadePedido = 1;
 
@@ -65,6 +67,10 @@ public class TelaProduto extends AppCompatActivity {
 
         total.setText("Total R$ " + produto.getValor());
         nomeProduto.setText(produto.getNome());
+
+        String uriImagem = produto.getUrl();
+        Picasso.get().load(uriImagem).into(imagem);
+
 
 
 

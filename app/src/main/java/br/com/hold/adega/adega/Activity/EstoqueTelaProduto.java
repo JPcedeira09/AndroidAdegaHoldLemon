@@ -1,7 +1,9 @@
 package br.com.hold.adega.adega.Activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,8 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,9 +46,11 @@ public class EstoqueTelaProduto extends AppCompatActivity {
 
     private ImageView imagemProdutoEstoque;
 
-    private Uri mImageUri;
+    private static final int SELECAO_GALERIA = 200;
+    private String urlImagem = "";
+
     private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +77,7 @@ public class EstoqueTelaProduto extends AppCompatActivity {
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    abrirMenuDono();
+
                 }
             });
 
@@ -81,16 +90,22 @@ public class EstoqueTelaProduto extends AppCompatActivity {
         alteraValor = findViewById(R.id.editTextAlteraValorProduto);
         altera = findViewById(R.id.buttonAlterarEstoque);
         imagemProdutoEstoque = findViewById(R.id.imagemProdutoEstoqueAdd);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("produtos");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("produtos");
+         String uriImagem1 = produto.getUrl();
+        Picasso.get().load(uriImagem1).into(imagemProdutoEstoque);
 
 
 
         imagemProdutoEstoque.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirImagemSelecionada();
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                if (intent.resolveActivity(getPackageManager()) != null){
+                    startActivityForResult(intent,SELECAO_GALERIA);
+
+                }
             }
         });
 
@@ -129,16 +144,13 @@ public class EstoqueTelaProduto extends AppCompatActivity {
 
                         int result = Integer.parseInt(qtd);
 
-                        System.out.println("--------------");
-                        System.out.println("--------------");
-                        System.out.println(result);
-                        System.out.println("--------------");
-                        System.out.println("--------------");
+
 
                         produto.setNome(nome);
                         produto.setDescricao(descricao);
                         produto.setQuantidade(result);
                         produto.setValor(Double.parseDouble(valor));
+
 
                         System.out.print(produto.toString());
                         update(produto);
@@ -192,23 +204,65 @@ public class EstoqueTelaProduto extends AppCompatActivity {
                 .updateChildren(produtoMap);
     }
 
-    private void abrirImagemSelecionada(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Produto produto = new Produto();
+        if (resultCode == RESULT_OK){
+            Bitmap imagem = null;
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null){
-            mImageUri = data.getData();
+            try {
+                switch (requestCode){
+                    case SELECAO_GALERIA:
+                        Uri localImagem = data.getData();
+                        imagem = MediaStore.Images.Media.getBitmap(getContentResolver(),localImagem);
 
-            Picasso.get().load(mImageUri).into(imagemProdutoEstoque);
+                        break;
+                }
+                if (imagem != null){
+                    imagemProdutoEstoque.setImageBitmap(imagem);
+                    ByteArrayOutputStream baos =new ByteArrayOutputStream();
+                    imagem.compress(Bitmap.CompressFormat.JPEG,70,baos);
+                    byte[] dadosimagem = baos.toByteArray();
+
+
+                    final StorageReference imagemRef = mStorageRef
+                            .child("produtos")
+                            .child(alteraNome.getText() + ".jpeg");
+                    UploadTask uploadTask = imagemRef.putBytes(dadosimagem);
+
+
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        @Override
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if (!task.isSuccessful()) {
+                                throw task.getException();
+                            }
+
+                            return imagemRef.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                Uri downloadUri = task.getResult();
+                                urlImagem = downloadUri.toString();
+
+                            } else {
+                            }
+                        }
+                    });
+
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
+
+
     }
+
 
 }

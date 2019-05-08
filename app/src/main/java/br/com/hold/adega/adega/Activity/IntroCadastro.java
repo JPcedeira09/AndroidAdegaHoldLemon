@@ -75,7 +75,6 @@ public class IntroCadastro extends AppCompatActivity {
                         Toast.makeText(IntroCadastro.this, "Preenche a senha",
                                 Toast.LENGTH_SHORT).show();
 
-
                     }
 
                 } else {

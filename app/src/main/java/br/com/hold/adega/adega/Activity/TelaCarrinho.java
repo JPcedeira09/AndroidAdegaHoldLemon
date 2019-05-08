@@ -98,13 +98,12 @@ public class TelaCarrinho extends AppCompatActivity {
 
                         AlertDialog.Builder dialog = new AlertDialog.Builder(TelaCarrinho.this);
 
-                        dialog.setTitle("OLHA ESSA PORRA");
+                        dialog.setTitle("Confirma e exclusão do produto?");
                         dialog.setPositiveButton("sim", new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                System.out.println("===========================================");
-                                System.out.println(valorTotal.toString());
+
 
                                 remover(itensCarrinho.get(position).getKey());
                                 getValorDoProduto(itensCarrinho.get(position).getNome());

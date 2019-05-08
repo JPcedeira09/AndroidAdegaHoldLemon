@@ -47,7 +47,7 @@ public class Cadastro2 extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //Inicializar Componetes
-        nome = findViewById(R.id.editNome);
+
         email = findViewById(R.id.editEmail);
         senha = findViewById(R.id.editSenha);
         casdastrar = findViewById(R.id.Cadastrar);
@@ -55,11 +55,10 @@ public class Cadastro2 extends AppCompatActivity {
         casdastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textNome = nome.getText().toString();
+
                 String textEmail = email.getText().toString();
                 String textSenha = senha.getText().toString();
 
-                if (!textNome.isEmpty()) {
                     if (!textEmail.isEmpty()) {
                         if (!textSenha.isEmpty()) {
 
@@ -76,10 +75,7 @@ public class Cadastro2 extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
 
-                } else {
-                    Toast.makeText(Cadastro2.this, "Preenche o nome",
-                            Toast.LENGTH_SHORT).show();
-                }
+
             }
 
 

@@ -67,6 +67,15 @@ public class PedidosRealizadosFragment extends Fragment {
 
                     @Override
                     public void onLongItemClick(View view, int position) {
+
+
+                            DatabaseReference firebaseRef = FirebaseConfig.getFirebase();
+                            DatabaseReference  produtoRef = firebaseRef.child("Adega")
+                                    .child("Pedidos");
+
+                            produtoRef.removeValue();
+
+
                     }
 
                     @Override

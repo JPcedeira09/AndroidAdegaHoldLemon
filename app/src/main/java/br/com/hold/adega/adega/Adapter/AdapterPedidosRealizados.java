@@ -39,18 +39,10 @@ public class AdapterPedidosRealizados  extends RecyclerView.Adapter<AdapterPedid
 
         Pedido pedido = listaPedidos.get(position);
 //        holder.textTempoEntrega.setText(pedido.getValoresPedido().getDataPedido());
-        holder.textPedidoN.setText("#" + position +" " +pedido.getUsuario().getNome());
-        holder.textValor.setText("R$ " + String.valueOf(pedido.getValoresPedido().getValorTotalProduto()));
-        holder.textStatus.setText(pedido.getValoresPedido().getStatusPedido());
-//        holder.textDistancia.setText(pedido.);
-
-//        holder.buttonStatus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context.getApplicationContext(),PopActivity.class);
-//                context.getApplicationContext().startActivity(i);
-//            }
-//        });
+//        holder.textPedidoN.setText("#" + position +" " +pedido.getUsuario().getNome());
+//        holder.textValor.setText("R$ " + (pedido.getValoresPedido().getValorTotalProduto()));
+//        holder.textStatus.setText(pedido.getValoresPedido().getStatusPedido());
+//
 
 
     }

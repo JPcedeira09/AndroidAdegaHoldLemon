@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import br.com.hold.adega.R;
 import br.com.hold.adega.adega.Model.Usuario;
 
@@ -17,9 +15,7 @@ public class Cadastro1 extends AppCompatActivity {
 
     private EditText nome, cpf , cep , endereco , numero , complemento , telefone;
     private Button proximo;
-    private Usuario usuario;
-    private FirebaseAuth autenticaçao;
-
+    private Usuario usuario = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +60,10 @@ public class Cadastro1 extends AppCompatActivity {
                             usuario.setNumero(textoNumero);
                             usuario.setComplemento(textoComplemento);
                             usuario.setCelular(textoTelefone);
-                            proximaPagina();
 
+                            Intent intent = new Intent(Cadastro1.this, Cadastro2.class);
+                            intent.putExtra("usuario", usuario);
+                            startActivity(intent);
 
                         } else {
                             Toast.makeText(Cadastro1.this,"Preenche o numero de seu telefone ",
@@ -99,12 +97,6 @@ public class Cadastro1 extends AppCompatActivity {
 
     }
 
-    public void proximaPagina(){
-        Intent intent = new Intent(Cadastro1.this, Cadastro2.class);
-        intent.putExtra("usuario", usuario);
-        startActivity(intent);
-
-}
 
 }
 
